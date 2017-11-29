@@ -1,0 +1,1835 @@
+\documentclass[12pt,a4paper,twoside,openright,titlepage]{book}
+
+\linespread{1.5}
+
+\usepackage[T1]{fontenc} % Font particolari
+
+\usepackage{textcomp}  %Simboli speciali
+
+\usepackage[utf8]{inputenc} %codifica file sorgenti
+
+\usepackage[english]{babel}
+
+%% The graphicx package provides the includegraphics command.
+\usepackage{graphicx}
+%% The amssymb package provides various useful mathematical symbols
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+%% The amsthm package provides extended theorem environments
+\usepackage{amsthm}
+
+\usepackage{blindtext}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+%\usepackage{lineno}
+\usepackage{url}
+\usepackage{pdfpages} 
+
+%font time new roman
+\usepackage{mathptmx}
+
+
+
+\usepackage{natbib}
+% da sistemare \setcitestyle{comma, authorname}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+
+\usepackage{float}
+% fix figure 
+
+
+
+\usepackage[left=2.5cm,right=2cm,bottom=4cm]{geometry}
+
+%use for abstract
+\usepackage{fancyhdr}
+\newenvironment{abstract}%
+{\cleardoublepage%
+\thispagestyle{empty}%
+\null \vfill\begin{center}%
+\bfseries \abstractname \end{center}}%
+{\vfill\null}
+
+%use for blank page
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+\pagestyle{plain} 
+
+\usepackage{tocbibind} %to include elements in Contents
+\usepackage{tocloft} %Contents
+\usepackage{lipsum} %Contents
+
+\AtBeginDocument{%
+  \renewcommand\listtablename{Tables}
+  \renewcommand\listfigurename{Figures}
+  \renewcommand\contentsname{Table of Contents}
+}
+
+% Centered title for ToC, LoF, LoT
+\renewcommand{\cfttoctitlefont}{\hfill\Huge\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftloftitlefont}{\hfill\Huge\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\hfill\Huge\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+
+% Leaders for chapter entries
+%\renewcommand\cftchapdotsep{\cftdotsep}
+
+% Add space to account for new chapter numbering schema
+%\renewcommand\cftchapnumwidth{3em}
+%\renewcommand\cftsecindent{3em}
+
+% Redefine representation for chapter (and section) counters
+%\renewcommand\thechapter{\arabic{chapter}}
+%\renewcommand{\thesection}{\arabic{section}}
+%\renewcommand\thesection{\arabic{chapter}.\arabic{section}}
+%\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+%\addcontentsline{toc}{chapter}{Abstract} forse da eliminare
+
+%per modificare interlinea
+%\linespread{2}
+
+\usepackage{titlesec}
+
+\setcounter{tocdepth}{6}
+\setcounter{secnumdepth}{6}
+
+%size of title
+%\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge\it}
+\titleformat{\chapter}{\normalfont\bf\huge}{\thechapter.\bf}{20pt}{\huge\bf}
+
+\titleformat{\section}{\normalfont\LARGE\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\Large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\large\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titleformat{\subparagraph}[runin]{\normalfont\small\bfseries\bf}{\thesubparagraph}{1em}{}
+
+%letters in title
+\renewcommand\theparagraph{\Alph{paragraph}}
+
+%\titleformat{\subparagraph}
+%{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{}
+%\titlespacing*{\subparagraph}
+%{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\frontmatter
+
+
+
+\chapter{Abstract}
+\setcounter{page}{3}
+
+Small pelagics dynamics are characterised by extreme variability owing to environmental
+factors, fishing and natural mortality. Because of highly-fluctuating dynamics, it is difficult to evaluate the stock status through models. To assess these evaluation difficulties, a model comparison framework based on the Management Strategy Evaluation (MSE) approach has been developed and tested in the Gulf of Cadiz anchovy stock.
+
+We have used a minimum realistic model (MRM) as operating model, including well
+documented environmental drivers for this stock to simulate abundance indexes and
+catches, and also a TAC value based on population size that works as a reference.  Outputs from simulations were used as inputs for the implementation of a Gadget integrated model and some data limited methods. This simulation approach allows testing how well Gadget and data limited methods capture the highly-fluctuating dynamics of anchovy measured as the distance from the estimated TAC value (by different models) to the known reference.
+
+The results indicate that Gadget TAC estimate was closer to the reference compared with
+the other methods in all the simulations. This high estimation power of Gadget suggests its suitability for the stock assessment of other small pelagics. This work presents a measure of how well this model accounts for external sources of variability coming from the effect of the environment and a methodology that is flexible enough to be used with
+different models in other fisheries assessments.
+
+
+\clearpage
+\tableofcontents
+\clearpage
+
+\listoftables
+\clearpage
+
+\listoffigures
+\clearpage
+
+%\afterpage{\blankpage}
+
+\mainmatter
+
+\chapter{Introduction}
+
+During the past two centuries, unconditional human exploitation has been consistently depleting natural resources due to intensification of pressure upon natural populations and their supporting ecosystems. 
+To avoid the collapse of the fisheries resources, it was necessary to impose management rules to harvest populations in a sustainable manner \citep{ludwig1993uncertainty}. 
+To this ends, it is crucial to estimate population abundance and future projections through stock assessment models. 
+Mathematical structures behind most of the models used in stock assessment are mainly focused in modeling biological processes and their interaction with fishing dynamics. 
+
+However, despite constant efforts to regulate fisheries by regional management bodies and national governments, fishing capacity often remains above the level necessary to ensure the sustainable exploitation of marine resources \citep{kell2007flr}. 
+The lacking of information about stocks and their variability coming from complex ecosystem interactions is one of the conditioning to failures. Usually, this variability is not included in fisheries models and that is an obstacle particularly for small pelagics because their life cycle is highly dependent on environmental fluctuations.
+
+\section{Small pelagic fish highly-fluctuating \newline resource}
+
+Small pelagic populations are subject to considerable fluctuations caused by natural factors and fishing pressure that modify ecosystem structure and functioning \citep{cury2000small}. 
+
+In fact, small pelagic fish are essential elements of marine ecosystems due to their significant biomass at intermediate levels of the food web, playing a considerable role in connecting the lower and upper trophic levels. This trophic proximity to phytoplankton leads to efficient use of the biomass created by primary producers and also makes their stocks fluctuate closer to the physical scales that govern production at the lowest levels of the food web \citep{cury2000small, erzini2005trends}.
+
+The short life span (2–3 years) with a fast initial growth of these species intensifies this vulnerability to the physical environment. Food availability, high natural mortality rates, low number of age classes, and large inter-annual changes in biomass cause fluctuations in recruitment strength, often linked to environmental factors. In particular, environmental condictions are recognized as a determinant of recruitment success and subsequent fish abundance \citep{freon2005sustainable}. 
+
+In addition, small pelagic fishes are very important fishery resources of the Mediterranean \citep{palomera2007small} and of other European Seas such as the Bay of Biscay and the area along the Atlantic coast of the Iberian peninsula. Small pelagic species constitute almost 50\% of the biomass landings in the world fisheries \citep{fao2014state}. The fact that their exploitation is frequently based on recruits make them highly sensitive to environmental forcing and extremely variable in their abundance. Variability and instability characterize the dynamics of small pelagics \citep{freon2005sustainable}.
+
+
+\section{Anchovy population in the Gulf of C{\'a}diz}
+
+Anchovy (\textit{Engraulis encrasicolus}) in Gulf of C{\'a}diz is one of these cases of extreme variabilty owing to their bottom-up and top-down control \citep{ruiz_anchovy_2007}. Thus, together with natural mortality, fishing pressure exerts a severe control of the population from the top and prevents adults to survive beyond one year. The population, without sustain of adults, totally relies on recruits to persist between years but their survival is highly affected by environmental factors that exert a bottom control.
+\newpage
+Stock dynamics before recruitment is mainly controlled by environmental variables (Figure \ref{fig:Anchovylife}).
+Spawning depends mainly on $SST$ \citep{motos1996spawning, garcia96}. Individuals from 9 to 24 months old could spawn up to four times per month from May to September when a minimum of 16°C $SST$ is reached and an increase of at least a degree per month is achieved \citep{ruiz2009bayesian}. 
+Recruit survival is highly affected by the wind and the discharges from the Guadalquivir River owing to different habitats that anchovy occupy during their life cycle \citep{ruiz_meteorological_2006}.
+ 
+Thus, when spawning occurs, the eggs and larvae can be advected by the effect of the easterlies on currents with a negative impact on survival because they are moved from favourable conditions of the shelf towards offshore waters \citep{ruiz_meteorological_2006}. The negative impact of advection is considered negligible after three months, when first juveniles are able to swim towards the estuary or its influence area at the inner shelf. 
+These first juveniles are affected by  freshwater regulation in the reservoir of Alcal{\'a} del R{\'i}o during the following two months of development, with a positive effect on survival when discharges are close to an optimum value of $100 hm^{3}$ per month. Lower levels of freshwater discharges constrain primary productivity of the shelf limiting the food supply for juveniles \citep{prieto2009oceanographic}, while major deviations in either direction affect survival negatively \citep{ruiz2009bayesian}. After 5 months, individuals are considered recruits and are included in the stock because of its dynamics is mainly determined by fishing mortality. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[page=1,width=0.40\textwidth]{Anchovy_life.png} 
+\caption{Diagram of anchovy life cycle in the Gulf of C{\'a}diz including
+environmental factors affecting different life stages. This figure is
+available in \citet{rincon2016economic}.}
+\label{fig:Anchovylife}
+\end{figure}
+\newpage
+
+The Gulf of Cadiz anchovy fishery corresponds to the ICES Subdivision IXa South and it is mainly exploited by single purpose purse-seiners. Fishing for anchovy usually begins in March and ends in November with the majority of the catch taken in spring (80\% of the annual catch, \citep{uriarte1996bay}).
+
+The stock is assessed annualy by ICES Working Group on Southern Horse Mackerel, Anchovy and Sardine \citep{ICES_WGMHSA_2016} and it is annualy evaluated using a survey and catch based assessment following the precautionary approach for a shot-live category 3 stock relative to maximum sustainable yield (MSY) to provide stock status.
+
+The short-live population is monitored by acoustic survey (PELAGO and ECOCADIZ series) and recruitment survey (SAR series). The management plan was based on individual fishing quotas allocated among vessels (according to their historical average landings) derived after the fixed Total Allowable Catch (TAC) for anchovy was imposed to the ICES Division IXa. This is combined with fishing effort restrictions and other technical measures aimed at biological and economic sustainability \citep{ICES_WGMHSA_2016}.
+For category 3 stocks, the available knowledge is insufficient to apply the ICES MSY approach since this framework is considered insufficiently responsive to their dynamic nature \citep{advise_2015}. 
+
+\section{Models}
+
+The anchovy stock of Gulf of C{\'a}diz is categorized by ICES as a data-limited stock belonging to the category 3. Stocks in category 3 are mainly assessed through survey indices to provide indications of trends in mortality, recruitment and biomass. The status of stock is indicated with survey and catch based assessments. It is a qualitative assessment based on the joint analysis of trends obtained from both fishery-dependent data and fishery-independent data series (i.e. landings, fishing effort, cpue, survey estimates). This assessment shows the current state of stock, in particular PELAGO and ECOCADIZ surveys provide a current state of the stock without giving information on the incoming year classes that will constitute the bulk of the biomass and catches.
+As explained above, anchovy is a short-living species with a potential year-to-year changes in biomass values depending on the actual level of recruitment.
+Hereby this survey and catch based assessment is not adequate to give a in-year advice on a catch level as requested to ICES from the European Commission \citep{ICES_WGMHSA_2016}.
+
+A quantitative assessment was performed by applying an ad hoc seasonal (half-year) separable model implemented and run on a spreadsheet \citep{ramos2001, ICES2002}. The model estimated a rapid increase in abundance and an elevated decrease in fishing mortality, which is not supported by available data. By not providing any reliable information, the explorative model is no longer used and no assessment model has thus far been successfully applied.
+
+\newpage
+The stock status obtained mainly with survey-based assessment could contain a source of uncertainty due population and ecosystem-based processes affecting stock dynamic but not integreted in any model. It is clear the need to include an assessment model with ecosystemic processes incorporates to avoid potential errors conecting with the stock fluctuation.
+In fact, particular attention should paid in this specific case to the physical component of the ecosystem  within an ecosystem approach to fishery (EAF) \citep{link2014integrating}.
+It is therefore obvious that difficulties of evaluation by mean of models are largely connected to environmental factors that affect recruitment and produce high variability \citep{ICES_WGMHSA_2016}.
+
+
+Another problem with the evaluation of the stock status thougth the models is that data available are insufficient to provide a complete input to stock-assessment models.
+Data-poor stock is defined by \citet{dowling2015empirical} as a stock in which: a quantitative stock assessment can not be undertaken because of limitations in the type and quality of available data; and best available information is inadequate to determine current stock status and the exploitation of targeted stocks. 
+To solve this problem it was necessary to develop alternative approaches of stock assessment with indicators and models tailored for data-poor situations: data limited methods. 
+Some of the information needed for these models can be fairly robust, such as catch data, but others can be of low quality and estimated with high uncertainty.
+When very limited information is available, the assessment models are simplified and important biological and ecosystemic processes are excluded. Often, stock-assessments focus on single-species models and basic knowledge regarding ecosystem functions in particular environmental factors is not accounted to simplify the model \citep{mace2001new}. 
+
+Applying different models to stock with the same amounts of data can become a learning experience for the behavior of the models. 
+A benchmark of models performance needs to be set up for this stock to emphasise which model can represent the best status.
+ 
+ 
+\newpage
+
+\section{Virtual simulation of reality}
+It is almost impossible to evaluate the status of the stock, and benchmarking different stock-assessment models, by conducting large-scale experiments on fish stocks.
+
+Therefore, there has been a trend towards the use of computer simulation of reality to develop robust strategies that can meet multiple objectives.
+Simulation is an important tool that can be used to generate virtual data, based on a set of assumptions about the stock dynamics; to evaluate the accuracy and precision of estimates derived from stock assessment models \citep{kell2007flr}.
+
+To create virtual reality, operating model is generated first. This model provides a mathematical representation of the underlying dynamics and simulates the situation under consideration and the data which would typically become available for use in assessments. 
+This strategy allows to create a virtual reality, which is perfectly known, as well as the performance of different models used to assess the state of the stock \citep{kell2014example}.
+
+Thus, operating models representing “truth”, are used to generate inputs for other (assessment) models so that the ability of the later to cope with the responses of the stock to population and ecosystem features can be assessed across a spectrum of data availability (i.e. data rich and data poor) situations. This kind of simulation testing of assessment methods has been performed for single species assessments previously.
+
+The benefit of this approach is that because “truth” is known, the capacity of the other models to reflect that state and how that capacity differs with data availability or system state can be directly assessed. It is possible to understanding at which extent a model can account for external sources of variability coming from the effect of the environment. It is consequently the basis for choosing between the different performance of the models \citep{punt2016management, punt2015strategic}.
+
+
+\newpage
+\section{Comparison model}
+
+The first element of model comparison framework is the use of a common database to ensure consistency and transparency in terms of the resolution and sources of input data and validation data. Second, compared models are parameterized independently of each other. Finally, we established a set of common indicators computed by all models and selected as performance metrics for model comparison.
+Given their different structure, the models included in the comparison have to be independently parametrized with each specific calibration routine, but with consistent input data.
+The purpose of comparing the models is to assist in greater understanding of the models available and in making informed decisions in instances where resources are limited and hence it is important to select the best possible model upfront.
+In a typical simulation, simulated data are sampled from the operating model (mimicking catches from the fishery and subsequent sampling of data at port). These data are then used within assessment models to assess the status of the stock.
+Real data is then used within the same assessment models to assess the status of the stock to evaluate the performance of each model in the reality.
+A direct comparison is possible because the estimated value is the same in all the models and models can be compared using the distance. 
+
+
+\section{Aim of research}
+It is now widely recognized that for the effective management of a fishery, it is not enough to consider only targeted species in isolation of their environment and other influences. To achieve the goals of sustainable exploitation it is necessary to support an ecosystem approach to fisheries (EAF) including ecosystem dynamics in the models.
+It is also important to understand which model can achieve the best performance.
+This works aims at being a first step to implement ecosystem factors into models and measure their performance.
+The main purpose of this thesis is compare model performance in respect to their capacity to support an ecosystem approach to fisheries management (EAFM) for anchovy fishery in the Gulf of Cádiz.
+
+
+\chapter{Materials and Methods}
+
+It is presented a model performance comparison through the implementation of a Gadget (Globally applicable Disaggregated General Ecosystem Toolbox) integrated model and some methods used for the assessment of data poor stocks using real and simulated data for the Gulf of C{\'a}diz anchovy stock. Real and simulated data were used for comparison purposes. 
+In the case of simulated data, the simulated abundance and catches time series were calculated with a minimum realistic model (MRM) that includes well documented enviromental drivers, thus acting as a reference to test how well Gadget and data limited models capture the highly-fluctuating dynamics of anchovy.
+With real data, without the reference it can be expected that the trends for the goodness of fit of the estimated population compared with the unknown real population would be  similar to the goodness of fit (measured as distance to the reference) obtained when simulated data was used. Comparison  will be performed using the estimated TAC value by the different models. The general strategy was summarized in Figure \ref{fig:strategy}.
+
+
+\newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[page=1,width=0.90\textwidth]{strategy.pdf} 
+\caption{Schema of overall strategy of model comparison performance. Comparison considered between models are rapresented with red lines.}
+\label{fig:strategy}
+\end{figure}
+
+
+
+
+
+\section{Simulated reality}
+
+\subsection{Operating model}
+
+After understanding the environmental processes behind early-stages anchovy survival in the Gulf of Cadiz, it is possible to simulate anchovy dynamics using an appropriate operating model.
+The minimum realistic model (MRM) proposed in \citet{rincon2016economic} simulates the yearly dynamics of this stock for 10 populations during a 30 year period as forced by these environmental drivers. In these simulations, the number of spawning events (related to SST), windy days and discharges were randomly sampled from uniform and lognormal distributions based on historical records and catches were extracted using Baranov equation with a target constant fishing mortality (0.04 $month^{-1}$).
+
+For each of the 10 simulated populations, the biomass and catch time-series are defined as the reference, therefore representing the "truth". The biomass in the last year used for TAC calculation (current reference-biomass) in each simulated population was approximated by sampling  1000 values from a normal distribution. The mean of this distribution was defined as the mean of the last 5 years simulated biomass while the CV was that of the whole reference-catch time-series. 
+Reference TAC was defined as the product of the current reference-biomass and the target annual fishing mortality (0.04*12).
+
+\subsection{Estimation models}
+
+Gadget and some data limited methods were used to test how well they calculate the TAC value in the 10 simulated populations compared with the reference TAC.
+
+All the models proposed provide a TAC which is in most of the cases equal to the product of calculated $F_{MSY}$ and estimated biomass in the last years as a comparative metric. 
+Simulated reference catches and an ad hoc created "perfect" biomass survey provided by the MRM, with the same values as the reference biomass, were included as data to Gadget and the other methods.
+Technical details for the implementation of Gadget and simple models for simulated data for TAC calculation in the  Gulf of C{\'a}diz anchovy stock are presented here.
+
+Gadget is a parametric and deterministic age-length-structured forward population dynamics simulation model. It estimates population dynamics parameters based on fisheries data allowing the use of an extensive set of data comparison and optimisation routines. Gadget works by running several times an internal model based on many parameters, and then comparing the data from the output of this model to observed data to get the best goodness-of-fit \citep{begley2004overview,begley2004gadget,taylor_simple_2007}. Input data and optimization processes were implemented in R using the \textit{mfdb} R package and gadget.iterative and gadget.forward function from Rgadget package are used to calculate $F_{MSY}$.
+
+\newpage
+The data limited methods chosen were extracted from \citet{carruthers2014evaluating} and they are summarized in Table \ref{tab:DLM_methods}. These methods were implemented using \textit{DLMtool} R package.
+
+{\def\arraystretch{2}\tabcolsep=10pt
+\begin{table}[h]
+
+\begin{tabular}{| p{8cm} | l |}
+
+\hline
+
+\textbf{Description} & \textbf{Source} \\ \hline
+
+Surplus Production MSY (SPMSY) & \cite{martell2013simple} \\
+
+Simple harvest control rule  (SBT1) & \cite{hillary2012developing} \\
+
+Demographic FMSY method (Fdem\_CC) & \cite{mcallister2001using} \\
+
+Costant catch (CC1 and CC4) & \cite{geromont2014generic} \\
+
+Beddington and Kirkwood life history method (BK\_CC)  & \cite{beddington2005estimation} \\
+
+Average of historical catch (AvC) & \cite{carruthers2015dlmtool} \\ \hline
+
+\end{tabular}
+
+\caption{Summary of data limited methods providing description and source of information}
+
+\label{tab:DLM_methods}
+
+\end{table}}
+
+
+The simple models chosen are part of a summary of data-limited methods described in \citet{carruthers2014evaluating} and there is an interactive way to use them available at \url{http://www.datalimitedtoolkit.org/}
+
+Technical details for the implementation of data limits methods for simulated data in the Gulf of Cadiz anchovy stock are also presented below. A subset of the Gadget data input show in Table \ref{tab:DLMtool} were used for the implementation of the data limited methods in simulated populations.
+All methods provide 100 values for an estimation of the TAC, i.e $\mathbf{TAC}=(TAC_{1},\dots,TAC_{S})$ with $S=100$.
+
+\newpage
+{\def\arraystretch{2}\tabcolsep=10pt
+\begin{table}[H]
+\scalebox{0.9}{%
+\begin{tabular}{| l | l |l|}
+\hline 
+Symbols & Description & Source \\ \hline
+$C_{y}$ &  Observed annual catches in number at year $y$ from 1988 to 2015 & \cite{ICES_WGMHSA_2016} \\ 
+$I_{y}$ & Observed survey index at year $y$ from 1988 to 2015 &  \cite{ICES_WGMHSA_2016} \\
+$C_{a}$ & Annual catches in numbers at age $a$ & \cite{ICES_WGMHSA_2007, ICES_WGMHSA_2016} \\
+$L_{50}$ &  Length at 50\% of maturity & \citep{bellido_use_2000} \\
+$k$ & Annual growth rate parameter & Gadget estimation \\
+$L_{\infty}$ & Terminal length parameter & \citep{millan_reproductive_1999}\\
+$a$ & Upper asymptote parameter & \citep{millan_reproductive_1999} \\ 
+$b$ & Growth range parameter & \citep{millan_reproductive_1999} \\
+$M$ & Natural annual mortality & \citep{GFCM2009} \\
+$L_{c}$ & First length in the annual length distribution of catches & \cite{ICES_WGMHSA_2016}\\
+\hline
+
+
+\end{tabular}}
+\caption{List of data input used in the model specification}
+\label{tab:DLMtool}
+\end{table}
+
+\subsubsection{Gadget}
+
+
+The general Gadget model description and all the options available can be found in Gadget manual \citep{begley2004gadget} and some specific examples can be found in \citet{taylor_simple_2007} and \citet{elvarsson_bootstrap_2014}. The Gadget model implementation consists in three parts, a simulation of biological dynamics of the population (simulation model), a fitting of the model to simulated observed data using a weighted log-likelihood function (observation model) and the optimization of the parameters using different iterative algorithms.
+
+A list of the symbols used and a graph with the Gadget model structure are presented in  Table \ref{tab:Symbols_sim} and Figure \ref{fig:Test}, respectively.
+
+\paragraph{Simulation model} \par
+The model consists of one stock component of anchovy (\textit{Engraulis encrasicolus}) in the ICES subdivision, IX.a South-Atlantic Iberian waters, Gulf of C{\'a}diz. Gadget works by keeping track of the number of individuals, $N_{a,l,y},$ at age $a = 0, \dots,2$, at length $l = 3.5,4,4.5,5, \dots,17$, at year $y=2016,\dots,2045$. The year-to-year transition involves increasing the age by one year, except for the last age group, which its age remains unchanged and the age group next to is added to it, like a 'plus group' including all ages from the oldest age onwards \citep{taylor_simple_2007}.
+
+\subparagraph{Growth}
+The growth function is a simplified version of the Von Bertalanffy growth equation, defined in \citet{begley2004gadget} as the LengthVBSimple Growth Function (\textit{lengthvbsimple}).
+Length increase for each length group of the stock is given by the equation below:
+
+\begin{equation}
+\label{eq:inlensim}
+\Delta l =(l_\infty - l)(1-e^{(k\Delta t)}),
+\end{equation}
+
+where $\Delta t$ is the length of the timestep, $l_\infty$ is the terminal length and $k$ is the growth rate parameter.
+
+The corresponding increase in weight of the stock is given by:
+
+\begin{equation}
+\label{eq:inweisim}
+\Delta w=a ((l + \Delta l)^b - l^b),
+\end{equation}
+
+whit $a=2.9e^{-5}$ and  $b=3.3438$ set as fixed and extracted from \citet{millan_reproductive_1999}.
+The growth functions described above calculate the mean growth for the stock within the model. In a second step the growth is translated into a beta-binomial distribution of actual growths around that mean with a parameter $\beta$ to be fitted by the model as described in  \citet{taylor_simple_2007}.
+
+\subparagraph{Initial abundance and recruitment}
+
+Stock population in numbers at the starting point of the simulation is defined as:
+$$N_{a,l,1}=10000\nu_{a}q_{a,l}, \quad a=0,\dots,2, l=3,\dots,20$$
+
+Where $\nu_{a}$ is an age factor to be calculated by the model and $q_{a,l}$ is the proportion at lengthgroup $l$ that is determined by a normal density with a specified mean length and standard deviation for each age group. Mean length at age and standard deviation was extracted from the age-length key calculated with Powell-Weterall methods in \cite{bellido_use_2000}. 
+The mean weight at age for this initial population is calculated from the standard weight-length relationship, following the formula $w=al^{b}$, where $a=2.9e^{-5}$, $b=3.3438,$ \citep{millan_reproductive_1999}. In Gadget files this was specified as a normal parametric distribution (\textit{Normalparamfile}).
+
+Similarly to the process to calculate the initial abundance described above, the recruitment specifies how the stock will be renewed. Yearly recruits enter to the age 0 population, as follows: $$N_{0,l,y}=p_{l}R_{y}, \quad l=3, \dots,15,$$ where $R_{y}$ represents recruitment at year $y$ and $p_{l}$ the proportion in lengthgroup $l$ that is recruited yearly. This proportion is sampled from a normal density with mean $\mu$ (calculated by the model) and standard deviation $\sigma$ (fixed). The mean weight for these recruits is calculated from the standard weight-length relationship explained above.  
+In gadget files this was specified also as a normal parameter distribution (\textit{Normalparamfile}).
+
+\subparagraph{Fleet operations}
+
+In the model the fleet acts as predator, it is assumed to remove a number of individuals based on reported total landings (extracted from the operating model). Catches are simulated based on these data available for the fleet and a length based suitability function that splits the total amount landed by the fleet (in biomass, totalfleet) between the length groups, according to the following equation:
+
+
+\begin{equation}
+\label{eq:totfleetsim}
+C_{l,y}  =  \frac{E_{y} S_{l} N_{l,y} W_{l}}{\sum\limits_l S_{l} N_{l,y} W_{l} },
+\end{equation}
+
+where $E_{y}$ represents biomass landed (in $Kg$) at year $y$, $W_l$ corresponds to weight at length and $S_{l}$ represents the suitability function that determines the proportion of prey of length $l$ that the fleet is willing to consume during period $y$.
+
+For this model the suitability function is specified in Gadget manual as an ExponentialL50 function (\textit{expsuitfuncl50}), and it is defined as follows:
+
+\begin{equation}
+\label{eq:sutsim}
+S_{l}  =  \frac{1}{1+e^{-4 \alpha (l-l_{50})}} 
+\end{equation}
+
+where $l_{50}$ is the length of the prey with a 50\% probability of predation and $\alpha$ a parameter related to the shape of the function, both parameters are fitted within the Gadget model.
+
+\paragraph{Observation model}
+
+Data are assimilated by Gadget using a weighted log-likelihood function.  The model uses as likelihood components a simulated biomass survey index (surveybio) and an age - length distribution from the simulated fleet.  
+
+\subparagraph{Biomass survey index}
+
+The survey index is defined as the total biomass of fish caught in a survey. It is compared to the modelled abundance using a linear regression with slope equal to 1 and intercept equal to 0 (\textit{fixedlinearfit}), as follows:
+
+\begin{equation}
+\label{eq:surindsim}
+\ell= (I_{y} - (\alpha+\beta(N_{y}))^2
+\end{equation}
+
+where $ I_{y}$ is the observed survey index at year $y$ and $ N_{y}$ is the corresponding population abundance calculated within the model.
+
+\subparagraph{Catch distribution}
+
+Age-length distributions are compared using $l$ lengthgroup at age $a$ and year $y$ for commercial fleet with a sum of squares likelihood function (\textit{sumofsquares}):
+
+\begin{equation}
+\label{eq:catdissim}
+\ell= \sum\limits_y \sum\limits_l (P_{a,l,y} - \pi_{a,l,y})^2
+\end{equation}
+
+where $P_{a,l,y}$ is the proportion of the data sample for that time/age/length combination, while $\pi_{a,l,y}$ is the proportion of the model sample for the same combination, as follows:
+\begin{equation}
+P_{l,y}=\frac{O_{a,l,y}}{\sum\limits_a \sum\limits_l  O_{a,l,y} }
+\end{equation}
+and
+\begin{equation}
+P_{l,y}=\frac{ N_{a,l,y}}{\sum\limits_a \sum\limits_l  N_{a,l,y} },
+\end{equation}
+where  $O_{a,l,y}$ corresponds to observed data. 
+
+
+When only length or age distribution is available. It is compared using equation \ref{eq:catdissim} described above but considering all ages or all lengths, respectively.
+
+
+\subparagraph{Understocking}
+If the total consumption of fish by all the predators (fleets in this case) amounts to more than the biomass of prey available, then the model runs into "understocking". In this case, the consumption by the predators is adjusted so that no more than 95\% of the available prey biomass is consumed, and a penalty, given by the equation \ref{eq:undersim}  below, is applied to the likelihood score obtained from the simulation (Stefansson 2005 4.1).
+
+\begin{equation}
+\label{eq:undersim}
+\ell=\sum\limits_y  U_{y}^{2}
+\end{equation}
+
+where $U_{y}$ is the understocking that has occurred in the model for that year.
+
+\subparagraph{Penalties}
+The BoundLikelihood likelihood component is used to give a penalty weight to parameters that have moved beyond the bounds in the optimisation process. This component does specify the penalty that is to be applied when these bounds are exceeded.
+
+\begin{equation*}
+\ell_i= \begin {cases}
+lw_i(val_i - lb_i)^{2} &\text{if $val_i < lb_i$} \\
+uw_i(val_i - ub_i)^{2} & \text{if $val_i > ub_i$} \\
+0 & otherwise
+\end{cases}
+\end{equation*}
+
+Where $lw_i=10000$ and $uw_i=10000$ are the weights applied when the parameter exceeds the lower and upper bounds, respectively, $val_i$ is the value of the parameter and, $lb_i$ and $ub_{i}$ are the lower and upper bounds defined for the parameter.
+
+
+\subparagraph{Iterative  re-weighting}
+
+The total objective function is a weighted sum of all likelihoods components. The weight for each component is determined with an iterative process following the approach presented in \citet{taylor_simple_2007} and in the apppendix of \citet{elvarsson_bootstrap_2014} based on the iterative reweighting scheme of \citet{stefansson_comparing_1998} and \citet{stefansson_issues_2003}, which is summarized as follows:
+
+Let $\mathbf{w_{r}}$ be a vector of length $L$ with the weights of the likelihood components (excluding understocking and penalties) for the run $r,$ and $SS_{i,r}, i=1,\dots,L,$ the likelihood score of component $i$ after run $r.$  First, a Gadget optimization run is performed  to get a likelihood score ($SS_{i,1}$) for each likelihood component assuming that all components have a weight equal to one, i.e., $\mathbf{w_{1}}=(1,1,\dots, 1).$  Then, a separated optimization run for each of the components ($L$ optimization runs) is performed  using  the following weight vectors:
+$$\mathbf{w_{i+1}}=(1/SS_{1,1},\dots, (1/SS_{i,1})*10000,1/SS_{i+1,1},\dots,1/SS_{L,1}), i=1, \dots,L.$$
+Resulting likelihood scores $SS_{i,i+1}$ are then used to calculate the residual variance, $\hat{\sigma}_{i}^{2}=SS_{i,i+1}/df^*$ for each component, that is used to define the final weight vector as $$\mathbf{w}=(1/\hat{\sigma}_{1}^{2},\dots, 1/\hat{\sigma}_{L}^{2}).$$
+
+Degrees of freedom $df^*$ is approximated by the number of non-zero data points in the observed data for each component.
+
+
+\newpage
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{0.7}
+\begin{tabular}{|l|l |}
+\hline
+\textbf{Index}  & \\
+\it a & Age, $ a = 0,\dots,2$  \\
+\it l & Length, $ l = 3.5,4,4.5,5\dots,22 $ \\
+\it y & Years, $ y = 2016,\dots,2045$ \\
+\textbf{Parameters}  &  \\
+\textbf{Fixed} & \\
+$a$ &   Upper asymptote, $a = 2.9 x 10^{-5}$ \\
+$b$ &   Growth range, $b = 3.3438$    \\
+$\sigma$ & Standard deviation, $\sigma =2$ \\
+\textbf{Estimate} & \\
+$l_\infty$  &   Terminal length  \\
+\it k       &   Annual growth rate     \\
+$\beta$ & Beta-binomial parameter \\
+$\nu_{a}$ & Age factor \\
+$\mu$ & Mean \\
+$l_{50}$ & Length with a 50\% probability of predation  \\
+$\alpha$ & Shape of function \\
+\textbf{Observed Data}        \\
+\it $E_{y}$   & Biomass landed at year $y$ \\
+$W_{l}$   &     Weight at length \\
+$I_{y}$  &  Observed survey index at year $y$ \\
+$P_{a,l,y}$  &    Proportion of the data sample over all ages and lengths \\
+ & for age/length combination      \\
+$O_{a,l,y}$ & Observed data sample for time/age/length combination\\
+\textbf{Others}   &  \\
+$\Delta l $ &   Length increase \\
+$\Delta w$  &   Weight increase \\
+$\Delta t$ & Length of timestep \\
+$N_{a,l,y}$ & Numbers of individuals of age $a$, length $l$ in the stock at year $y$\\
+$q_{a,l}$ & Proportion at lengthgroup $l=3,\dots,20$ for each age group \\
+$R_{y}$ & Recruitment at year $y$ \\
+$p_{l}$ & Proportion in lengthgroup $l$ that is recruited \\
+$C_{l,y}$ & Total amount in biomass landed by commercial fleet    \\
+$S_{l}$  &  Proportion of prey of length $ l $  that the fleet/predator is \\
+ & willing to consume    \\
+$\pi_{a,l,y}$ & Proportion of the model sample over all ages and lengths \\
+ & for that time/age/length combination \\
+$U_{t}$  & Understocking for that year  \\
+$lw_i$ and $uw_i$   &  Weight applied when the parameter exceeds \\
+ & the lower and upper bound           \\
+$lb_i$ and $ ub_i $  &  Lower and upper bound defined for the parameter \\
+$val_i $    &   Value of the parameter           \\
+
+\hline
+\end{tabular}
+\caption{List of symbols used in model specification}
+\label{tab:Symbols_sim}
+\end{table}
+
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[page=1,angle=90,width=0.90\textwidth]{Gadget_simulated.pdf} 
+\caption{Graph Gadget model for simulated data}
+\label{fig:Test}
+\end{figure}
+
+\paragraph{TAC calculation}
+
+TAC values were calculated as product of estimated current biomass and $F_{MSY}$. The biomass in the last year used for TAC calculation (current biomass) in each simulated population was approximated by sampling 1000 values from a normal distribution. The mean of this distribution was defined as the mean of the last 5 years estimated biomass while the CV was that of the whole catch time-series. 
+The $F_{MSY}$ was obtained using the stochastic forward simulation. If that results in an increasing function of yield versus harvest rate. $F_{MSY}$ was defined as the F that reduces the initial simulated biomass in a 30\%.
+
+
+
+\subsubsection{SPMSY}
+
+The Catch trend Surplus Production $MSY$ (SPMSY) is a catch based method described in \citet{martell2013simple}. This method requires a time series of catches and a range of stock sizes at the first and final year of the catch data time series. The Surplus production model is used to calculate abundance and predict two parameters: carrying capacity ($\kappa$) and maximum rate of population increase ($r$). The combinations of $r-\kappa$ is able to avoid the collapses of the population and not to exceed the assumed carrying capacity. This set of viable $r-\kappa$ combinations can be used to approximate $MSY$. 
+
+
+\paragraph*{C \quad TAC calculation}
+\addcontentsline{toc}{paragraph}{C \qquad TAC calculation}
+
+Annual catch $C_{y}$ is required as input. In this case annual landings from 1988 to 2015 $(C_{y}, y=1,\dots,28)$ were used. 
+
+The initial stock status is calculated assuming a relative biomass $B_{1,s}$ in the first year with an initial depletion level ($\lambda_{0s}$) as follows: 
+
+\begin{equation}
+\label{eq:Binit}
+B_{1,s} = \lambda_{0s} * \kappa_{s}, \qquad s=1,\dots,20000 
+\end{equation}
+
+where $\lambda_{0s}$ is sampled from a uniform distribution between 0.5 and 0.9. These bounds for initial depletion implies that the stock is between half and 90\% of carrying capacity at the beginning of the time series. Initial carrying capacity is represented by $\kappa_{s}$ and it was sampled from a random uniform distribution, $runif(\bar{C_{y}}/ r_{s}, 10 * \bar{C_{y}}/ r_{s})$ with $s=1,\dots,20000$, where $r_{s}$ represents maximum rate of population increase. 
+
+This rate was sampled from a uniform distribution which limits are set on the basis of life history parameters: growth rate ($k = 0.2$), maximum age ($MaxAge = 3$) and time required to achieve length equal to the ratio of $L_{50}$ ($L_{50} = 10$) and terminal length ($Linf = 19$).
+The annual biomass in next years
+is calculated using a Schaefer production model, where the observed catch is subtracted from the biomass at the start of the year, as follows:
+
+\begin{equation}
+\label{eq:Bplus}
+B_{y+1,s} = [B_{y,s} + r_{s} + B_{y,s}(1-B_{y,s}/\kappa_{s}) - C_{y+1}]/\kappa_{s}, \quad s=1,\dots,20000 
+\end{equation}
+
+Then a Bernoulli distribution was used for discriminating against which $r_{s}-\kappa_{s}$ pairs fit the initial and ending depletion ranges whitin which the stock never collapses or the carrying capacity is not exceeded. The result is a relative biomass estimate ($B_{y+1,s}$) that falls within the assumed range of depletion. 
+For each parameter combination that results in a viable population at the end of the time series input, estimates of TAC can be calculated from the population parameters with the following equation:
+
+\begin{equation}
+\label{eq:TAC_SPMSY}
+TAC = \mathbf{\kappa} * \mathbf{d_{y}} * \mathbf{r}/2
+\end{equation}
+
+where $\mathbf{d_{y}}=(d_{y,1},\dots,d_{y,s})$ with $d_{y,s}$, as the biomass estimate that falls from 30\% to 70\% of depletion level. 
+
+\subsubsection{SBT1}
+
+The SBT1 trend-based management procedure is used in the Commission for the Conservation of Southern Bluefin Tuna (CCSBT). This method, relying on a target catch level (simulated $MSY$), makes incremental adjustments to TAC recommendations based on the apparent trend in CPUE \citep{hillary2012developing}.
+
+\paragraph*{C \quad TAC calculation}
+\addcontentsline{toc}{paragraph}{C \qquad TAC calculation}
+
+The method calculates TAC recommendations based on the apparent trend in CPUE using a target catch level (simulated MSY) with the following equation:
+
+\begin{equation}
+\label{eq:TAC_SBT1}
+TAC = \hat{C}_{y} * \begin {cases} 
+1 - \delta_{1} |\lambda| &\text{if $ \lambda < 0$} \\ 
+1 - \delta_{2} \lambda  & \text{if $\lambda \geq 0$} 
+\end{cases}
+\end{equation}
+
+where fixed parameters $\delta_{1}$ and $\delta_{2}$ are equal to 1.5 and 3, respectively, $\lambda$ represents the slope in the linear regression of the abundance index ($I_{y}$) over the last 10 years and $\hat{C}_{y}$ was sampled from a log normal distribution with mean, $\bar{{C}_{y}}=28$, and coefficient of variation  calculated from catches time series provided by the operative model (CV=0.47) \citep{hillary2012developing}. 
+ 
+\subsubsection{Fdem\_CC}
+
+The Fdem\_CC is a demographic $F_{MSY}$ method that use catch-curve analysis to estimate recent total mortality ($Z$). It calculates the rate of increase ($r$), using estimates of life history parameters and the $F_{MSY}$ is approximated as an evarage of the rate \citep{mcallister2001using}. Catch-curve analysis provides biomass and mortality rates estimations relying on given catch data. Catch curve analysis assumes that all individuals, after a certain age, exhibit the same fishing mortality rate and the proportion of catch at age can be interpreted in terms of total mortality. An estimate of natural mortality rate is needed to separate fishing mortality from the total mortality rate estimated by catch-curve analysis \citep{carruthers2014evaluating}. 
+\paragraph*{C \quad TAC calculation}
+\addcontentsline{toc}{paragraph}{C \qquad TAC calculation}
+
+The Fdem\_CC method is a management procedure that provides a $TAC$ given by the product of $F_{MSY}$ and an estimated current biomass ($B$). 
+
+The $F_{MSY}$ is approximated by $r/2$ where $r$ was calculated from a demographic prior method using the following equation presented in \citet{mcallister2001using}:
+
+\begin{equation}
+\label{eq:Lokta}
+\sum\limits_{a=0}^{A} e^{-(a+1)r} S_{a} m_{a} = 1
+\end{equation}
+
+Here, $S_{a}$ represents the survival female rate at age, $m_{a}$ is the fecundity at age, $r$ is the maximum population growth rate and $A$ is maximum age. 
+Survival is defined as: $S_{a}=e^{-M_{a}}, a =0, \dots,3,$ where $M_{a}$ represents natural mortality at age. 
+
+The $m_{a}$ is the expected number of age-0 female spawned per individual female expressed as a function of weight at age ($w_{a}$), proportion of individuals mature at age $a$ ($g_{a}$) and the fecundity of those mature at age $a$ ($f_{a}$) with $a=0,1,2$.
+The $w_{a}$, for mature anchovies is calculated using a linear regression from the seasonal von Bertalanffy growth model \citep{bellido_use_2000} to transform age to length, and the weight at length relationship $w_{a}=aL^b$, with $a=2.9e^{-6}$ and $b=3.3438$.
+The $g_{a}$ is sampled from log-normal density distribution with mean obtained from the inverse form of the Von Bertalanffy growth fuction (specified $L_{\infty}$,$k$, $t_{0}$ and $L_{50}$) and standard deviation, $\sigma=2$. 
+The $f_{a}$ is calculated with a form of Beverton-Holt stock-recruitment curve using the following equation: 
+
+\begin{equation}
+\label{eq:BevH}
+f_{a} = \frac {1} {SBPR (1-h)/(4h)} 
+\end{equation}
+
+where $h$ is the estimated steepness parameter and $SBPR$ is the spawner biomass per recruitment calculated as a function of $S_{a}$, $w_{a}$ and $g_{a}$.
+
+
+The current biomass ($B$) is estimated using a catch curve analysis based on current catches ($C$) and F, following the equation below \ref{eq:Ac}:
+
+\begin{equation}
+\label{eq:Ac}
+B = \frac{ C }{ 1-e^{(-F)}}
+\end{equation}
+
+where $C$ was obtained sampling from a log-normal distribution using the catches input data mean, $\bar{C_{y}}$ and its coefficient of variation. 
+The natural mortality ($M$) was sampled from a log-normal distribution using as input data $M=1.2$ and $CV=0.4$. Total mortality ($Z$) was sampled from a normal distribution with mean and standard deviation estimated from catch at age ($C_{a}$) over the last 3 years. Fishing mortality ($F$) was obtained from $Z$ and $M$ ($F=Z-M$).
+
+
+\subsubsection{CC1 and CC4}
+
+CC1 and CC4 are costant catch management procedures describes in \citet{geromont2014generic}. The CC management procedures is a catch-based method that link costant catch to average recent catches. 
+
+As results, total allowable catch (TAC) is fixed to some \% of the average TAC over the last 5 years. In absence of quantative data this method allows to figure out what level of TAC, that corresponds to an appropriate level of catch, can be supported by the resource \citep{geromont2014generic}. 
+
+\paragraph*{C \quad TAC calculation}
+\addcontentsline{toc}{paragraph}{C \qquad TAC calculation}
+  
+ The TAC value is calculated according to the equation below:
+
+\begin{equation}
+\label{eq:TAC_CC}
+TAC_{S} = (1-x) * \tilde{C}_{y}
+\end{equation}
+
+where $x$ is a parameter that depends on the proportion of catch levels considered and $\tilde{C}_{y}$ was obtained through a log-normal distribution considering only the average catch over last 5 years with coeffincient of variation of catches based on the last 5 years.
+Two management procedures are taken into account: CC1 which sets TAC according to a 100\% of average historical catches with $x=0$; CC4 which sets TAC according to a 70\% of average historical catches with $x=3$ \citep{carruthers2015performance}.   
+
+\subsubsection{BK\_CC}
+
+The Beddington and Kirkwood life history method (BK\_CC) is an abundance-based management procedures combined with catch curve analysis. This abundance-based method relies on estimation of current abundance, by using the catch curve analysis explained previously, and $F_{MSY}$. The estimation of $F_{MSY}$, described in \citet{beddington2005estimation}, is provided using length at first capture and maximum growth rate of individuals.
+
+
+\paragraph*{C \quad TAC calculation}
+\addcontentsline{toc}{paragraph}{C \qquad TAC calculation}
+
+The method provides a $TAC$ given by the product of an approximation of $F_{MSY}$ and an estimated current biomass ($B$). The $F_{MSY}$ is calculated as follows:
+
+\begin{equation}
+\label{eq:FMSY}
+F_{MSY} = \frac{0.6 K}{0.67 - L}
+\end{equation}
+
+where $K$ is a growth parameter estimate and $L$ is the estimated length at first capture, measured relative to $L{inf}$. 
+
+Each of these parameters were obtained by a log-normal distribution using as mean $k=0.2$, $L{c}=6.5$ and $L{inf}=19$, respectively, with a corresponding coefficient of variation \citep{beddington2005estimation}. 
+The current biomass $B$ is estimated using a catch curve analysis using catches input.
+
+\subsubsection{AvC}
+
+The AvC method is a catch-based management procedure based on the average of historical catch. This approach suggests the use of average catches over the most recent years with a reduction based on uncertainty about stock status, although in these implementations a downward adjustment is not included. The value obtained is a numeric vector of TAC recommendations \citep{carruthers2015dlmtool}.
+
+\paragraph*{C \quad TAC calculation}
+\addcontentsline{toc}{paragraph}{C \qquad TAC calculation}
+
+The data input required for TAC calculation is the average of annual catch over 1988-2015 period. The TAC value is sampled from a log-normal distribution with a 20 \% of coefficient of variation \citep{carruthers2015dlmtool}.
+
+ 
+
+\newpage
+
+\section{Real data}
+\subsection{Estimation model}
+
+Comparison using real population were simirarly performed using Gadget and data limited methods testing how well they fit. Real data were extracted from ICES reports as well as from different records that the Instituto Espa{\~n}ol de Oceanograf{\'i}a has compiled on this stock along the last decades.
+
+\subsubsection{Gadget}
+
+As explained above, a Gadget model works making forward simulations and minimizing an objective (negative weighted log-likelihood) function that measures the difference between the model and data, the discrepancy is presented as a likelihood score for each time period and model component. General Gadget structure and options are described in \citet{begley2004gadget}.
+
+The model was implemented quarterly from 1998 to 2015. Purse-seine fleet catches data (in numbers) was used as predator data and the following datasets were combined in the objective function as likelihood components:
+ 
+\begin{itemize}
+\item Length distribution of landings (1998-2015)
+\item Age distribution of landings (1998-2015)
+\item Landings mean length at age (1988-2015)
+\item Biomass indexes from ECOCADIZ scientific survey. (Second quarter 2004, 2006; third quarter 2007, 2009, 2010, 2013 and 2014)
+\item Age and length distribution of scientific survey ECOCADIZ (Second quarter 2004, 2006; third quarter 2007, 2009, 2010, 2013 and 2014)
+\item Biomass indexes from PELAGO scientific survey. (First quarter 1999, 2001-2003, second quarter 2005-2010, 2014)
+\item Age and length distribution of scientific survey PELAGO (First quarter 1999, 2001-2003, second quarter 2005-2010, 2014)
+\item Biomass indexes from scientific SAR survey. (Last quarter 1998, 2000,2001, 2007 and 2012).
+\end{itemize}
+ 
+The Gadget model implementation consists in three parts, a simulation of biological dynamics of the population (simulation model), a fitting of the model to observed data using a weighted log-likelihood function (observation model) and the optimization of the parameters using different iterative algorithms.   
+Input data, weighting and forecasting processes were implemented in R using the \textit{mfdb} R package; gadget.iterative and gadget.forward function from \textit{Rgadget} package are used to calculate $F_{MSY}$.
+
+
+A list of the symbols used and a graph with the Gadget model structure are presented in Table \ref{tab:Symbols_real} and Figure \ref{fig:Graph_real}, respectively.
+
+
+\paragraph{Simulation model}
+
+
+The model consists of one stock component of anchovy (\textit{Engraulis encrasicolus}) in the ICES subdivision, IX.a South-Atlantic Iberian waters, Gulf of C{\'a}diz. Gadget works by keeping track of the number of individuals, $N_{a,l,y,t},$ at age $a = 0, \dots,3$, at length $l = 3,3.5,4,4.5, \dots,22$, at year $y=1988,\dots,2015$, and each year divided into quarters $t =1, \dots, 4.$. The last time step of a year involves increasing the age by one year, except for the last age group, which its age remains unchanged and the age group next to is added to it, like a 'plus group' including all ages from the oldest age onwards \citep{taylor_simple_2007}.
+
+\subparagraph{Growth}
+The growth function is a simplified version of the Von Bertalanffy growth equation, defined in \citet{begley2004gadget} as the LengthVBSimple Growth Function (\textit{lengthvbsimple}).
+Length increase for each length group of the stock is given by the equation below:
+
+\begin{equation}
+\label{eq:inlenreal}
+\Delta l =(l_\infty - l)(1-e^{(k\Delta t)}),
+\end{equation}
+
+where $\Delta t$ is the length of the timestep, $l_\infty=19 cm$ is the terminal length obtained for this stock by \citet{millan_reproductive_1999} and $k$ is the growth rate parameter.
+
+The corresponding increase in weight of the stock is given by:
+
+\begin{equation}
+\label{eq:inweireal}
+\Delta w=a ((l + \Delta l)^b - l^b),
+\end{equation}
+
+whit $a=2.9e^{-5}$ and  $b=3.3438$ set as fixed and extracted from \citet{millan_reproductive_1999}.
+The growth functions described above calculate the mean growth for the stock within the model. In a second step the growth is translated into a beta-binomial distribution of actual growths around that mean with a parameter $\beta$ to be fitted by the model as described in  \citet{taylor_simple_2007}.
+
+\subparagraph{Natural mortality}
+
+Natural mortality at age, $M_{0}=1.17$ and $M_{1}=0.43,$ was derived from anchovy mortality in the Alboran Sea (GFCM, 2009). The values for $M_{2}$ and $M_{3}$ were chosen high enough to be consistent with catches at age data, where individuals older than two years are rarely found. 
+
+\subparagraph{Initial abundance and recruitment}
+
+Stock population in numbers at the starting point of the simulation is defined as:
+$$N_{a,l,1,1}=10000\nu_{a}q_{a,l}, \quad a=0,\dots,3, l=3,\dots,20$$
+
+Where $\nu_{a}$ is an age factor to be calculated by the model and $q_{a,l}$ is the proportion at lengthgroup $l$ that is determined by a normal density with a specified mean length and standard deviation for each age group. Mean length at age and standard deviation was extracted from the age-length key calculated with Powell-Weterall methods in \cite{bellido_use_2000}, the standard deviation was chosen as the same for all age groups and equal to the maximum standard deviation (1.5). The mean weight at age for this initial population is calculated by multiplying the reference weight corresponding to the length by a relative condition factor assumed as 1. Reference weight at length $l=3,3.5,\dots,20$ was approximated with an exponential fit ($w=6.74e^{-4}e^{0.23*l}$) using data from length at age (Seasonal Von Bertallanfy growth \cite{bellido_use_2000}) and transforming them to weight with the formula $w=al^{b}, a=0.0038$ and $b=3.19$ for individuals from 1-10 months old and $a=2.9e^{-5}, b=3.3438,$ for individuals older than 10 months \citep{millan_reproductive_1999} . In Gadget files this was specified as a normal condition distribution (\textit{Normalcondfile}).
+
+Gadget integrates data and processes to produce a diagnose of recruits which is added to the smallest age group each year.
+Similarly to the process to calculate the initial abundance described above, the recruitment specifies how the stock will be renewed. Recruits for $t=4$ enter to the age 0 population, as follows: $$N_{0,l,y,t}=p_{l,t}R_{y,t}, \quad t=4, l=3, \dots,15,$$ where $R_{y,t}$ represents recruitment at year $y$ and quarter $t,$ and $p_{l,t}$ the proportion in lengthgroup $l$ that is recruited at quarter $t$ which is sampled from a normal density with mean ($\mu$) and standard deviation ($\sigma_t$) calculated by the model. The mean weight for these recruits is calculated by multiplying the reference weight corresponding to the length by a relative condition factor assumed as 1. Reference weight at age was the same used to calculate the initial population mean weight at age explained above.  In gadget files this was specified also as a normal condition distribution (\textit{Normalcondfile}).
+
+\subparagraph{Fleet operations}
+
+In the model the fleets act as predators.  There are three fleets inside the model: two for acoustic surveys (ECOCADIZ and PELAGO) and one for commercial landings (purse-seine fleet). Acoustic surveys fleets are assumed to remove 1 $Kg$ in each of the quarters when the surveys take place. Commercial fleet is assumed to remove a number of individuals each quarter based on reported total landings (extracted from ICES reports). Catches are simulated based on these data available for the fleets and a length based suitability function that splits the total amount landed by surveys (in biomass, totalfleet)  and the commercial fleet (in numbers, numberfleet) between the length groups, according to equations \ref{eq:totfleetreal} and \ref{eq:nfleetreal}  respectively, as follows:
+
+
+\begin{equation}
+\label{eq:totfleetreal}
+C_{l,y,t}  =  \frac{E_{y,t} S_{l,T} N_{l,y,t} W_{l}}{\sum\limits_l S_{l,T} N_{l,y,t} W_{l} },
+\end{equation}
+and
+\begin{equation}
+\label{eq:nfleetreal}
+C_{l,y,t}  =  \frac{E_{y,t} S_{l,T} N_{l,y,t} }{\sum\limits_l S_{l,T} N_{l,y,t} }, 
+%C_{ns(l)} = \frac{E_b S_{s(l)} N_{sl}}{\sum\limits_s \sum\limits_l S_{s(l)} N_{sl} }
+\end{equation}
+
+where $E_{y,t}$ represents biomass landed (in $Kg$) at year $y$ and quarter $t$ in equation \ref{eq:totfleetreal} and numbers landed in equation \ref{eq:nfleetreal}, $W_l$ corresponds to weight at length and $S_{l,T}$ represents the suitability function that determines the proportion of prey of length $l$ that the fleet is willing to consume during period $T, T=1,2,$ where $T=1$ corresponds to the period 1988-2000 and $T=2$ to 2001-2015.
+
+For this model the suitability function is specified in Gadget manual as an ExponentialL50 function (\textit{expsuitfuncl50}), and it is defined as follows:
+
+\begin{equation}
+\label{eq:sutreal}
+S_{l,T}  =  \frac{1}{1+e^{-4 \alpha_{T} (l-l_{50,T})}} 
+\end{equation}
+
+where $l_{50,T}$ is the length of the prey with a 50\% probability of predation during period T and $\alpha_{T}$ a parameter related to the shape of the function, both parameters are estimated from the data within the Gadget model. The whole model time period (1988-2015) has been splited into two different periods for suitability parameters because of changes in size regulation for the fishery around 1995 that become effective around 2001.
+
+\paragraph{Observation model}
+
+
+Data are assimilated by Gadget using a weighted log-likelihood function.  The model uses as likelihood components three biomass survey indices (ECOCADIZ, PELAGO and SAR), age - length distributions from two surveys (ECOCADIZ and PELAGO) and one commercial fleet (purse-seine) and mean length at age distribution from that commercial fleet (see Table \ref{likedesc} for an overview of the likelihood data used in the model). 
+
+\subparagraph{Biomass Survey indices}
+
+The survey indices are defined as the total biomass of fish caught in a survey. The survey index is compared to the modelled abundance using a log linear regression with slope  equal to 1  (\textit{fixedslopeloglinearfit}), as follows:
+
+\begin{equation}
+\label{eq:surindreal}
+\ell=\sum\limits_t (\log(I_{y,t}) - (\alpha+\log(N_{y,t}))^2
+\end{equation}
+
+where $ I_{y,t}$ is the observed survey index at year $y$ and quarter $t$ and $ N_{y,t}$ is the corresponding population abundance calculated within the model. Note that the intercept of the log-linear regression, $\alpha=\log (q)$, with $q$ as the catchability of the fleet (i.e $I_{y,t}=q N_{y,t}$).
+
+\subparagraph{Catch distribution}
+
+Age-length distributions are compared using $l$ lengthgroup at age $a$ and time-step $y,t$ for both, commercial and survey fleets with a sum of squares likelihood function (\textit{sumofsquares}):
+
+\begin{equation}
+\label{eq:catdisreal}
+\ell= \sum\limits_y \sum\limits_t \sum\limits_l (P_{a,l,y,t} - \pi_{a,l,y,t})^2
+\end{equation}
+
+where $P_{a,l,t,y}$ is the proportion of the data sample for that time/age/length combination, while $\pi_{a,l,t,y}$ is the proportion of the model sample for the same combination, as follows:
+\begin{equation}
+P_{a,l,t,y}=\frac{O_{a,l,y,t}}{\sum\limits_a \sum\limits_l  O_{a,l,y,t} }
+\end{equation}
+and
+\begin{equation}
+\pi_{a,l,t,y}=\frac{ N_{a,l,y,t}}{\sum\limits_a \sum\limits_l  N_{a,l,y,t} },
+\end{equation}
+where  $O_{a,l,y,t}$ corresponds to observed data. 
+
+
+When only length or age distribution is available. It is compared using equation \ref{eq:catdisreal} described above but considering all ages or all lengths, respectively.
+
+
+\subparagraph{Catch statistic}
+
+Mean length at age for commercial fleets are compared using an unweighted sum of squares of mean length likelihood function (\textit{lengthnostddev}):
+
+\begin{equation}
+\label{eq:catstatreal}
+\ell=\sum\limits_y \sum\limits_t \sum\limits_a ((x_{a,y,t} - \mu_{a,y,t})^2 N_{a,y,t})
+\end{equation}
+
+where $x_{a,y,t}$ is the sample mean weight from the data for the timestep/age combination, $\mu_{a,y,t}$ is the mean lenght at age calculated from the model for the same combination and $N_{a,y,t}$ is the number of individuals for the same combination.
+
+\subparagraph{Understocking}
+If the total consumption of fish by all the predators (fleets in this case) amounts to more than the biomass of prey available, then the model runs into "understocking". In this case, the consumption by the predators is adjusted so that no more than 95\% of the available prey biomass is consumed, and a penalty, given by the equation \ref{eq:underreal}  below, is applied to the likelihood score obtained from the simulation. (Stefansson 2005 4.1).
+
+\begin{equation}
+\label{eq:underreal}
+\ell=\sum\limits_t  U_{t}^{2}
+\end{equation}
+
+where $U_{t}$ is the understocking that has occurred in the model for that timestep.
+
+\subparagraph*{Penalties}
+The BoundLikelihood likelihood component is used to give a penalty weight to parameters that have moved beyond the bounds in the optimisation process. This component does specify the penalty that is to be applied when these bounds are exceeded.
+
+
+\begin{equation*}
+\ell_i= \begin {cases}
+lw_i(val_i - lb_i)^{2} &\text{if $val_i < lb_i$} \\
+uw_i(val_i - ub_i)^{2} & \text{if $val_i > ub_i$} \\
+0 & otherwise
+\end{cases}
+\end{equation*}
+
+Where $lw_i=10000$ and $uw_i=10000$ are the weights applied when the parameter exceeds the lower and upper bounds, respectively, $val_i$ is the value of the parameter and, $lb_i$ and $ub_{i}$ are the lower and upper bounds defined for the parameter.
+
+
+\subparagraph{Iterative  re-weighting}
+
+The total objective function is a weighted sum of all likelihoods components. The weight for each component is determined with an iterative process following the approach presented in \citet{taylor_simple_2007} and in the apppendix of \citet{elvarsson_bootstrap_2014} based on the iterative reweighting scheme of \citet{stefansson_comparing_1998} and \citet{stefansson_issues_2003}, which is summarized as follows:
+
+Let $\mathbf{w_{r}}$ be a vector of length $L$ with the weights of the likelihood components (excluding understocking and penalties) for the run $r,$ and $SS_{i,r}, i=1,\dots,L,$ the likelihood score of component $i$ after run $r.$  First, a Gadget optimization run is performed  to get a likelihood score ($SS_{i,1}$) for each likelihood component assuming that all components have a weight equal to one, i.e., $\mathbf{w_{1}}=(1,1,\dots, 1).$  Then, a separated optimization run for each of the components ($L$ optimization runs) is performed  using  the following weight vectors:
+$$\mathbf{w_{i+1}}=(1/SS_{1,1},\dots, (1/SS_{i,1})*10000,1/SS_{i+1,1},\dots,1/SS_{L,1}), i=1, \dots,L.$$
+Resulting likelihood scores $SS_{i,i+1}$ are then used to calculate the residual variance, $\hat{\sigma}_{i}^{2}=SS_{i,i+1}/df^*$ for each component, that is used to define the final weight vector as $$\mathbf{w}=(1/\hat{\sigma}_{1}^{2},\dots, 1/\hat{\sigma}_{L}^{2}).$$
+
+Degrees of freedom $df^*$ is approximated by the number of non-zero data points in the observed data for each component.
+
+
+
+\newpage
+
+\begin{table}[H]
+
+\centering
+
+\small\small
+
+\renewcommand{\arraystretch}{0.6}
+
+\begin{tabular}{|l|l|}
+
+\hline
+
+\textbf{Index}  & \\
+
+\it a & Age, $ a = 0,\dots,3$  \\
+
+\it l & Length, $ l = 3,3.5,4,4.5,\dots,22$  \\
+
+\it y & Years, $ y = 1988,\dots,2015$ \\
+
+\it t & Quartely timestep, $ t = 1,\dots,4 $ \\
+
+\it T & $T$ = 1 for period 1988-2000 \\
+
+      & $T$ = 2 for period 2001-2015 \\
+
+\textbf{Parameters}  &  \\
+
+\textit{Fixed}  &  \\
+
+$a$ &   Upper asymptote, $a = 2.9 \times 10^{-5}$ \\
+
+$b$ &   Growth range, $b = 3.3438$   \\
+
+$l_\infty$  &   Terminal length, $l_\infty = 19 $  \\
+
+\textit{Estimated}  & \\
+
+\it k       &   Annual growth rate    \\
+
+$\beta$ & Beta-binomial parameter \\
+
+$\nu_{a}$ & Age factor \\
+
+$\mu$ & Mean  \\
+
+$\sigma_t$ & Standard deviation  \\
+
+$l_{50,T}$ & Length with a 50\% probability of predation during period T \\
+
+$\alpha_{T}$ & Shape of function   \\
+
+\textbf{Observed Data}    &    \\
+
+\it $E_{y,t}$   & Number or biomass landed at year $y$ and quarter $t$ \\
+
+$W_{l}$   &     Weight at length \\
+
+$I_{y,t}$  &  Observed survey index at year $y$ and quarter $t$ \\
+
+$P_{a,l,y,t}$  &    Proportion of the data sample over all ages and lengths \\
+ &  for timestep/age/length combination      \\
+
+$O_{a,l,y,t}$ & Observed data sample for time/age/length combination \\
+
+$x_{a,y,t}$  &  Sample mean weight from the data for \\
+& the timestep/age combination  \\
+
+\textbf{Others}   &  \\
+
+$\Delta l $ &   Length increase \\
+
+$\Delta w$  &   Weight increase \\
+
+$\Delta t$ & Length of timestep \\
+$N_{a,l,y,t}$ &  Number of individuals of age $a$, length $l$  in the stock at year \\
+ &  and quarter $y$ and $t$, respectively.  \\
+
+$q_{a,l}$ & Proportion in lengthgroup $l$ for each age group \\
+
+$R_{y,t}$ & Recruitment at year $y$ and quarter $t$ \\
+
+$p_{l,t}$ & Proportion in lengthgroup $l$ that is recruited at quarter $t$ \\
+
+$C_{l,y,t}$ & Total amount in biomass landed by surveys and in number \\
+& landed by commercial fleet    \\
+
+$S_{l,T}$  &  Proportion of prey of length $l$ that the fleet/predator is willing \\
+& to consume during period $T$  \\
+
+$\pi_{a,l,y,t}$ & Proportion of the model sample  over all ages and lengths \\
+ & for that timestep/age/length combination \\
+
+$\mu_{a,y,t}$  & Mean length at age  for the timestep/age combination \\
+
+$U_{t}$  & Understocking for  timestep $t$ \\
+
+$lw_i$ and $uw_i$   &  Weights applied when the parameter exceeds \\
+&the lower or upper bound         \\
+
+$lb_i$ and $ ub_i $  &  Lower and upper bound defined for the parameter \\
+
+$val_i $    &   Value of the parameter           \\
+
+ 
+
+\hline
+
+\end{tabular}
+
+\caption{List of symbols used in model specification}
+
+\label{tab:Symbols_real}
+
+\end{table}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[page=1,angle=90,width=0.90\textwidth]{Gadget_real.pdf} 
+\caption{Graph Gadget model for real data}
+\label{fig:Graph_real}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\small\small
+\label{likedesc}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l| l l l|}
+\hline
+Data source & Type & Timespan & Likelihood function  \\
+\hline
+Commercial landings & Length distribution & All quarters, 1988-2015 & See eq. \ref{eq:catdisreal}\\
+& Age distribution & All quarters, 1988-2015 &  See eq. \ref{eq:catdisreal}\\
+& Mean length at age of landings & All quarters, 1988-2015 & See eq. \ref{eq:catstatreal} \\
+ECOCADIZ survey & Biomass survey indexes & Second quarter 2004, 2006 & see eq. \ref{eq:surindreal}\\
+& & third quarter 2007, 2009, 2010, 2013 and 2014 & \\
+& Age-length distribution & Second quarter 2004, 2006 & see eq. \ref{eq:catdisreal}\\
+& & third quarter 2007, 2009, 2010, 2013 and 2014 & \\
+PELAGO survey & Biomass survey indexes & First quarter 1999, 2001-2003 &  see eq. \ref{eq:surindreal}\\
+& & second quarter 2005-2010 and 2014 & \\
+& Age-length distribution &  First quarter 1999, 2001-2003 &  see eq. \ref{eq:catdisreal}\\
+& & second quarter 2005-2010, 2013 and 2014 & \\
+SAR survey  & Biomass survey indexes & Last quarter 1998, 2000,2001, 2007 and 2012 &  see eq. \ref{eq:surindreal}\\
+\hline
+\end{tabular}}
+\caption{Overview of the likelihood data used in the model}
+\end{table}
+
+\paragraph{TAC calculation}
+
+Gadget provides a TAC given by the product of $F_{MSY}$ and estimated biomass in the last years.
+$F_{MSY}$ is defined as the fishing mortality consistent with achieving Maximum Sustainable Yield (MSY), which is the largest average catch or yield that can continuously be taken from a stock under existing environmental conditions. In particular, for Gadget, the $F_{MSY}$ was calculated using a stochastic forward simulation (through gadget.forward function from R package RGadget) of 100 years under different harvest rates. The maximum mean catch was selected from the output (res.Rdata), obtained from the simulation for real data.
+
+\newpage
+Biomass was approximated sampling 1000 possible values from a log normal distribution with mean equal to estimated current biomass and coefficient of variation equal to that of catch time-series. Estimated current biomass was calculated as the mean of the Gadget estimated biomass for the last 5 years.
+
+
+\subsubsection{Data limited methods}
+
+The data limited methods used are presented in Table \ref{tab:DLM_methods}. They are the same used in the simulated data approach.
+With real data, data limited methods use the same data available for Gadget implementation in real data approach using the same subset of information show in Table \ref{tab:DLMtool}. Also in this case they provide TAC values given by the different approaches previously explained.   
+
+
+\section{Reproducibility}
+
+The manuscript was generated using a combination of \LaTeX\ and R codes with R package \textit{Knitr} in file \textit{.Rnw}.
+\textit{Knitr}, a dynamic document engine, is an R package that produces documents that are responsive to changes in the source code. Here it is used to embed R code into a \LaTeX\ document. It is possible to write the dynamic source code in \LaTeX\ and use \textit{Knitr} syntax to incorporate R code within it. \textit{Knitr} processes the document and an R output (code, data, statistics, plots) is automatically included into the report and updated by changing the R code \citep{xie2015dynamic}.
+The file to assure reproducibility is included in \url{} in GitHub.
+
+
+\newpage
+\chapter{Results}
+
+<<eval=TRUE, echo=FALSE, results=hide, fig=FALSE>>=
+ 
+ #for plots 
+ #font (base_family) originale helvetica
+ #add library(extrafont) se voglio usare Arial
+ library(extrafont)
+ theme_Publication <- function(base_size=14, base_family="Arial") {
+   library(grid)
+   library(ggthemes)
+   (theme_foundation(base_size=base_size, base_family=base_family)
+     + theme(plot.title = element_text(face = "bold",
+                                       size = rel(1.2), hjust = 0.5),
+             text = element_text(),
+            panel.background = element_rect(colour = NA),
+             plot.background = element_rect(colour = NA),
+             axis.title = element_text(face = "bold",size = rel(1)),
+             axis.title.y = element_text(angle=90,vjust =2),
+             axis.title.x = element_text(vjust = -0.2),
+             axis.text = element_text(), 
+             axis.line = element_line(colour="black"),
+             axis.ticks = element_line(),
+             panel.grid.major = element_line(colour="#f0f0f0"),
+             panel.grid.minor = element_blank(),
+             legend.key = element_rect(colour = NA),
+             legend.position = "bottom",
+             legend.direction = "horizontal",
+             legend.key.size= unit(0.2, "cm"),
+             legend.margin = unit(0, "cm"),
+             legend.title = element_text(face="italic"),
+             plot.margin=unit(c(10,5,5,5),"mm"),
+             strip.background=element_rect(colour="#f0f0f0",fill="#f0f0f0"),
+             strip.text = element_text(face="bold")
+     ))
+   
+ }
+ 
+ scale_fill_Publication <- function(...){
+   library(scales)
+ discrete_scale("fill","Publication",manual_pal(values = c("#386cb0","#fdb462","#7fc97f","#ef3b2c","#662506","#a6cee3","#fb9a99","#984ea3","#ffff33")), ...)
+   
+ }
+ 
+ scale_colour_Publication <- function(...){
+
+ library(scales)
+   discrete_scale("colour","Publication",manual_pal(values = c("#386cb0","#fdb462","#7fc97f","#ef3b2c","#662506","#a6cee3","#fb9a99","#984ea3","#ffff33")), ...)
+   
+ }
+ 
+ #MSE approach Gadget+DLMtool+Reference TAC
+ library(ggplot2)
+ #avail('DLM_data') 
+ #Ex_dlm.data<-new("DLM_data",stock="C:/Users/Jason.Cope/Documents/GitHub/Data-limited-tools/Shiny_DLMtool/DLM_objects_examples/Example_datafile.csv")
+ #1000 simulations
+ library(Rgadget)
+ library(DLMtool)#check 3.2.1 version
+ Ex_dlm.data.OM.1<-new("DLM_data",stock="C:/Users/raki1/Documents/Tesi/Material and Methods/dati/Example_datafile_anchovy_sim.csv")
+ 
+ 
+ Ex_dlm.data.OM.1@Year<-2016:2045
+ Ex_dlm.data.OM.1@L95<-15
+ Ex_dlm.data.OM.1@MPs<-c("AvC","BK_CC","CC1",      "CC4" ,"Fdem_CC" ,   "SBT1", "SPMSY" )
+ sim<-10
+ TACa<-array(0,dim=c(length(Ex_dlm.data.OM.1@MPs),1000,sim))
+ Ex_dlm.data.OM.1@Units<-"tonnes"
+ Ex_dlm.data.OM.1@t<-30
+ min.mean.sd.max <- function(x) {
+   r <- c(mean(x) - sd(x), mean(x) - sd(x), mean(x), mean(x) + sd(x), mean(x) + sd(x))
+   names(r) <- c("ymin", "lower", "middle", "upper", "ymax")
+   r
+ }
+ 
+ box.only <- function(x) {
+   r <- quantile(x, probs = c(0.25, 0.25, 0.5, 0.75, 0.75))
+   names(r) <- c("ymin", "lower", "middle", "upper", "ymax")
+   r
+ }
+ load("C:/Users/raki1/Documents/Tesi/Material and Methods/dati/ReferenceMSEModelRachele.Rdata")
+ Real_Biomass_mean<-c()
+ Real_TAC<-c()
+ FMSY<-c()
+ MuC_gadget_MSE<-c()
+ #check FishMortTarget
+ FishMortTarget<-0.04
+ for (i in 1:sim){
+   slot(Ex_dlm.data.OM.1,"Cat")<-t(matrix(CatchAnnualHCRbiomass[20:49,i])*1e-6)#por 1e-6 para pasar a toneladas
+   slot(Ex_dlm.data.OM.1,"Ind")<-t(matrix(AnchovyAnnualHCRbiomass[20:49,i])*1e-6)
+   slot(Ex_dlm.data.OM.1,"CV_Cat")<-sd(CatchAnnualHCRbiomass[20:49,i])/mean(CatchAnnualHCRbiomass[20:49,i])
+   agestruct<-data.frame(as.vector(CatchHCRAges[,,20:49,i]),as.vector(AnnualAgeStructure))
+   names(agestruct)<-c("value","Age")
+   agestruct$year<-rep(20:49,each=length(as.vector(AnnualAgeStructure)))
+   CAA<-dcast(agestruct,year~Age,sum)
+   CAA[[5]]<-rep(0,length(20:49))
+   CAA[[1]]<-NULL
+   Ex_dlm.data.OM.1@CAA[1,,]<-as.matrix(CAA)
+   #Can(Ex_dlm.data.OM.1)
+   funcs <- Ex_dlm.data.OM.1@MPs
+   temp <- DLMtool:::getTAC(Ex_dlm.data.OM.1, MPs = funcs, reps=1000)
+   TACa[,,i] <- temp[[1]]
+   Ex_dlm.data.OM.TAC.1 <- temp[[2]]
+   Ex_dlm.data.OM.TAC.1@TAC <- TACa[,,i]
+   TAC.out<-Ex_dlm.data.OM.TAC.1@TAC
+   TAC.df<-data.frame(t(TAC.out))
+   colnames(TAC.df)<-Ex_dlm.data.OM.1@MPs #MP.labs()
+   #Despertar con Gadget
+   #CVgadget<-sd(biomass.by.year$total.biomass)/mean(biomass.by.year$total.biomass)
+   #MuC<-mean(biomass.by.year$total.biomass[23:28]*0.001)#0.001 para pasar de kilogramos a toneladas
+   #Biomgadget <- DLMtool:::trlnorm(100, MuC, CVgadget)
+   CVreal<-sd(CatchAnnualHCRbiomass[20:49,i])/mean(CatchAnnualHCRbiomass[20:49,i])
+   MuAreal<-mean(AnchovyAnnualHCRbiomass[45:49,i]*1e-6)#1e-6 para pasar de gramos a toneladas
+   Biomreal<- DLMtool:::trlnorm(1000, MuAreal, CVreal)
+   
+   #create res1.Rdata with res.Rdata_step_MSEgadget in every MSE_Rachele folder
+   
+   ##work with server with res.Rdata_step_MSEgadget:
+   ##load gadget.iterative_MSE_MR.r
+    #source("(the path to the file/gadget.iterative_MSE_MR.r")
+    #assignInNamespace("gadget.iterative",gadget.iterative, ns="Rgadget")
+   #tmp<-callGadget(s=1,main='main',i='params.in',o='lik.out',ignore.stderr=FALSE, lo='tmp')
+ 
+   #tmp<-gadget.iterative(params.file = 'params.in',
+                       #optinfofile = 'optfile',
+                       #wgts = 'WGTS1',
+                       #rew.sI=TRUE)
+   #fit<-gadget.fit(wgts='WGTS1')
+ 
+   #progn <- gadget.forward(params.file='WGTS1/params.final',
+                         #effort=seq(0.1,1,by = 0.05),
+                         #fleets=data.frame(fleet = "seine", ratio = 1),
+                         #years = 100,
+                         #num.trials = 10, gd = list(dir = ".", rel.dir = "PRE1"))
+   #progn.ssb <- progn$lw
+   #res <-
+     #left_join(progn$catch %>%
+               #group_by(year,trial,effort) %>%
+               #summarise(catch=sum(biomass.consumed)),
+             #progn.ssb) %>%
+     #filter(year > 2105) %>%
+     #ungroup() %>%
+     #group_by(stock,effort,trial) %>%
+     #summarise(catch=mean(catch),
+             #total.bio = mean(total.bio)) %>%
+     #ungroup() %>% 
+     #group_by(stock,effort) %>%
+     #summarise(catch.m=mean(catch),
+               #catch.u=quantile(catch,0.975),
+               #catch.l=quantile(catch,0.025),
+               #ssb.m=mean(total.bio),
+               #ssb.u=quantile(total.bio,0.975),
+               #ssb.l=quantile(total.bio,0.025))
+ 
+    #save(res,file="res1.Rdata")
+   ##end res.Rdata_step_MSEgadget
+   ## create WGTS1.Rdata and res1.Rdata for each folder
+   
+   # i<-1
+   load(paste("C:/Users/raki1/Documents/Tesi/Material and Methods/MSE_Rachele/AnchovyMSEgadget1",i,"/res1.Rdata",sep=""))
+   Fmsy <- 
+     res %>% 
+     filter(catch.m==max(catch.m))
+   
+   SSB30<-(res %>% filter(effort==0.1))$ssb.m-(res %>% filter(effort==0.1))$ssb.m*20/100
+   Effort<-(res %>% filter(ssb.m <= SSB30))$effort[1]
+   if (is.na(Effort)){Effort<-0.6}
+   if (as.numeric(as.character(Fmsy$effort[1]))>=0.9){
+     FMSY[i]<--log(1-as.numeric(as.character(Effort)))
+   } else {
+     FMSY[i]<--log(1-as.numeric(as.character(Fmsy$effort)))}
+   
+   
+   #FMSY[i]<--log(1-as.numeric(as.character(Effort)))
+   #  if (Fmsy$effort==1){
+   #    FMSY[i]=0.6
+   #    } else {
+   # FMSY[i]<--log(1-as.numeric(as.character(Fmsy$effort)))}
+   
+   #load WGTS1 create in each folder   
+   load(paste("C:/Users/raki1/Documents/Tesi/Material and Methods/MSE_Rachele/AnchovyMSEgadget1",i,"/WGTS1/WGTS.Rdata",sep=""))
+   
+   fit<-out
+   assign(paste("FIT6",i,sep=""),ggplot(fit$sidat,aes(year,number.x)) + geom_point()+  geom_line(data=fit$res.by.year,aes(year,total.biomass))+ labs(y="Biomass (Kg)")+ggtitle(paste("Simulation ",i,sep=""))+theme_Publication())
+   
+   Cvgadget<-sd(fit$res.by.year$num.catch)/mean(out$res.by.year$num.catch)# CV toda la serie de capturas
+   MuC<-mean(fit$res.by.year$total.biomass[26:30]*0.001)#media de biomasa de los Ãºltimos 5 aÃ±os
+   Biomgadget <- DLMtool:::trlnorm(1000, MuC, Cvgadget)
+   MuC_gadget_MSE[i]<-MuC
+   TAC.df$Gadget<-Biomgadget*FMSY[i]
+   TAC.df$Reference<-Biomreal*FishMortTarget*12
+   
+   TAC.df.melt<-melt(TAC.df)
+   Real_Biomass_mean[i]<-MuAreal
+   Real_TAC[i]<-floor(MuAreal*FishMortTarget*12)
+   assign(paste("p",i,sep=""),ggplot(data=TAC.df.melt,aes(as.factor(variable),value, fill=variable))+stat_summary(fun.data = box.only, geom = "boxplot")+ coord_flip(ylim = c(0,quantile(TAC.df,0.95,na.rm=T)))+labs(x="Method",y="TAC (tonnes)") +scale_fill_manual(breaks=as.character(unique(TAC.df.melt$variable)),values=c(rep("white",7),"dark grey","grey90"))+guides(fill=FALSE)+theme_Publication())
+   #ylim(0,quantile(TAC.df,0.95,na.rm=T))
+   assign(paste("Ex_dlm.data.OM.",i,sep=""),Ex_dlm.data.OM.1)
+   assign(paste("Ex_dlm.data.OM.TAC.",i,sep=""),Ex_dlm.data.OM.TAC.1)
+}
+ 
+library(gridExtra)
+library(Rmisc)
+#library(extrafont)    check with font() if there is base_family
+multiplot(p1, p2, p3, p4, p5, p6, cols=2)
+multiplot(FIT61, FIT62, FIT63, FIT64, FIT65, FIT66, cols=2)
+multiplot(p7, p8, p9, p10, cols=2)
+pdf("TACS_MSEafv.pdf")      
+gridExtra::grid.arrange(p1, p2, p3, p4, p5, p6, ncol = 2)
+#multiplot(p1, p2, p3, p4, p5, p6, cols=2)
+dev.off()
+ 
+ggsave("TAC_plot_MSE_fv_mar.pdf", plot = gridExtra::grid.arrange(p1, p2, p3, p4, p5, p6, ncol = 2), width=210, height=297, units="mm",device=cairo_pdf)
+ggsave("TAC_plot_MSE_fv2_mar.pdf", plot = gridExtra::grid.arrange(p7, p8, p9, p10, ncol = 2), width=210, height=198, units="mm",device=cairo_pdf)
+
+ 
+@
+
+To benchmark the different models presented, TAC values derived from Gadget and others methods for both real and simulated data are plotted into boxplots showing first quartile, median and third quartile. Boxplots graphics are used to show differences in TAC value between models and distance that insists among the different models. They provide a useful way to visualise the distance and other characteristics of responses of models. 
+By the use of boxplots, it is possible to directly compare models using the distance because the estimated value is the same in all the models.
+
+Figures \ref{fig:sim data1} and \ref{fig:sim data2} show the TAC values for 10 different simulations comparing Gadget and the other models performance against the reference. Numbers of simulation can be considered as sufficient to represent and evaluate simulated data. Data limited methods do not show significant differences in distance one another. In most of the simulations the implementation of data limited methods results in a more precautionary TAC than the calculated with Gadget. In almost all boxplots is evident an higher distance between Gadget and other methods using the reference as a benchmark.
+Gadget TAC is closer to the reference in most of the scenarios but the median is higher in all the cases.  This difference is due to the $F_{MSY}$ calculated by Gadget. This is higher than the target annual fishing mortality (0.04*12) used in the reference population for all the simulations.
+
+\newpage
+
+\begin{figure}[H]
+\centering
+\includegraphics[page=1,width=0.80\textwidth]{TAC_plot_MSE_fv_mar} 
+\caption{Comparison of TAC values derived from Gadget and other methods with a reference simulated population. Each plot represents a simulation and upper and lower "hinges" correspond to the first and third quartiles (the 25th and 75th percentiles)}
+\label{fig:sim data1}
+\end{figure}
+
+\newpage
+
+\begin{figure}[H]
+\centering
+\includegraphics[page=1,width=0.90\textwidth]{TAC_plot_MSE_fv2_mar} 
+\caption{Comparison of TAC values derived from Gadget and other methods with a reference simulated population. Each plot represents a simulation and upper and lower "hinges" correspond to the first and third quartiles (the 25th and 75th percentiles)}
+\label{fig:sim data2}
+\end{figure}
+
+\newpage
+The same graphical method is applied for real data. Figure \ref{fig:real data} does not clearly show a significant difference in performance between Gadget and others methods from 1988 to 2015.
+As a results two Gadget models were tested with real data, one using data available from 1988 to 2015 and the other from 2001 to 2015. These implementations were chosen because Gadget had a different performance in both periods regarding
+length-distribution fit. The absence of regulation together with extreme environmental
+conditions in the first years (1988-2000) produce length-distribution patterns that Gadget does not fit well (likelihood score=6.3). This lack of fit in the first Gadget model results in an TAC close that estimated by data limited methods (Figure \ref{fig:real data}). This suggests that Gadget becomes close to a precautionary approach (such as data limited methods do) for this period. Nevertheless, Gadget results in a higher TAC value compared with that estimated by data limited methods except for "Fdem\_CC", which calculated TAC value has the biggest variance. 
+
+<<eval=FALSE, echo=FALSE, results=hide, fig=FALSE>>=
+library(extrafont)
+theme_Publication <- function(base_size=14, base_family="Arial"){
+  library(grid)
+  library(ggthemes)
+  (theme_foundation(base_size=base_size, base_family=base_family)
+    + theme(plot.title = element_text(face = "bold",
+                                      size = rel(1.2), hjust = 0.5),
+            text = element_text(),
+            panel.background = element_rect(colour = NA),
+            plot.background = element_rect(colour = NA),
+            axis.title = element_text(face = "bold",size = rel(1)),
+            axis.title.y = element_text(angle=90,vjust =2),
+            axis.title.x = element_text(vjust = -0.2),
+            axis.text = element_text(),
+            axis.line = element_line(colour="black"),
+            axis.ticks = element_line(),
+            panel.grid.major = element_line(colour="#f0f0f0"),
+            panel.grid.minor = element_blank(),
+            legend.key = element_rect(colour = NA),
+            legend.position = "bottom",
+            legend.direction = "horizontal",
+            legend.key.size= unit(0.2, "cm"),
+            legend.margin = margin(t=0,unit='cm'), #original legend.margin= unit(0, "cm")
+            legend.title = element_text(face="italic"),
+            plot.margin=unit(c(10,5,5,5),"mm"),
+            strip.background=element_rect(colour="#f0f0f0",fill="#f0f0f0"),
+            strip.text = element_text(face="bold")
+    ))
+
+}
+
+scale_fill_Publication <- function(...){
+  library(scales)
+  discrete_scale("fill","Publication",manual_pal(values = c("#386cb0","#fdb462","#7fc97f","#ef3b2c","#662506","#a6cee3","#fb9a99","#984ea3","#ffff33")), ...)
+
+}
+
+scale_colour_Publication <- function(...){
+  library(scales)
+  discrete_scale("colour","Publication",manual_pal(values = c("#386cb0","#fdb462","#7fc97f","#ef3b2c","#662506","#a6cee3","#fb9a99","#984ea3","#ffff33")), ...)
+
+}
+
+library(DLMtool)
+library(ggplot2)
+library(reshape2)
+library(Rgadget)
+#Running TAC estimation with DLMobject
+#access example data objects
+for(i in 1:length(DLMdat))assign(DLMdat[[i]]@Name,DLMdat[[i]])
+#avail('DLM_data') 
+#Ex_dlm.data<-new("DLM_data",stock="C:/Users/Jason.Cope/Documents/GitHub/Data-limited-tools/Shiny_DLMtool/DLM_objects_examples/Example_datafile.csv")
+#Ex_dlm.data<-new("DLM_data",stock="/home/marga/Documents/Data_limited course/DLM/Example_datafile_anchovy.csv")
+Ex_dlm.data<-new("DLM_data",stock="C:/Users/raki1/Documents/Tesi/Material and Methods/dati/Example_datafile_anchovy.csv")
+
+Ex_dlm.data@L95<-15
+Ex_dlm.data@MPs<-c("AvC","BK_CC","CC1",      "CC4" ,"Fdem_CC",  "SBT1" ,    "SPMSY")
+#,  "DDe",       "DDe75",      "matlenlim",  "matlenlim2", "MRnoreal",   "MRreal",     "slotlim"  #valen DDe y DDe75
+funcs <- Ex_dlm.data@MPs
+temp <- DLMtool:::getTAC(Ex_dlm.data, MPs = funcs, 1000)
+TACa <- temp[[1]]
+Ex_dlm.data.TAC <- temp[[2]]
+Ex_dlm.data.TAC@TAC <- TACa
+TAC.out<-Ex_dlm.data.TAC@TAC[,,1]
+
+TAC.df<-data.frame(t(TAC.out))
+colnames(TAC.df)<-Ex_dlm.data@MPs#MP.labs()
+
+#Para despuÃ©s de incluir el Gadget
+#TAC.df.melt<-melt(TAC.df)
+
+
+
+######################################################################3333
+#en el cesga he corrido:
+#load("/mnt/EMC/Home_SVG/home/csic/mdp/mrh/mnt/store/GADGET_backup/Anchovy74/WGTS/WGTS.Rdata")
+# directorio Anchovy75
+# load("WGTS/WGTS.Rdata")
+# fit<-out
+# pre.fleet<-filter(fit$fleet.info,year==2015) %>% select(fleet, ratio = harv.rate)
+
+#correr manualmente en el cesga gadget_forward_MR.r (Directorio Anchovy75 y PRE2 (res2)) parar en la lÃ�nea 196 que da un error en llply y  #check anch file y cambiar normalparam por normalcond
+#####################################################################3
+#aquÃ� esto por fuera, mejor lad res2!
+####################
+library(repmis)
+source_data("https://github.com/mmrinconh/gadgetanchovy/blob/master/Anchovy75_Rachele/res2.Rdata?raw=True")
+Fmsy <- 
+  res %>% 
+  filter(catch.m==max(catch.m))
+FMSY<--log(1-as.numeric(as.character(Fmsy$effort)))
+
+source_data("https://github.com/mmrinconh/gadgetanchovy/blob/master/Anchovy75_Rachele//WGTS/WGTS.Rdata?raw=True")
+#Run<-81
+#load(paste("C:/Users/raki1/Documents/Tesi/Material and Methods/gadget_model/Anchovy",Run,"/WGTS/WGTS.Rdata",sep=""))
+
+fit<-out
+Cvgadget<-sd(fit$res.by.year$num.catch)/mean(out$res.by.year$num.catch)# CV toda la serie
+MuC<-mean(fit$res.by.year$total.biomass[11:15]*0.001)#media de biomasa de los Ãºltimos 5 aÃ±os
+Biomgadget <- DLMtool:::trlnorm(1000, MuC, Cvgadget)
+
+TAC.df$Gadget<-Biomgadget*FMSY
+
+#Para despuÃ©s de incluir el Gadget
+
+
+TAC.df.melt<-melt(TAC.df)
+
+box.only <- function(x) {
+  r <- quantile(x, probs = c(0.25, 0.25, 0.5, 0.75, 0.75))
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")
+  r
+}
+
+
+#TAC.plot<-ggplot(data=TAC.df.melt,aes(as.factor(variable),value))+geom_boxplot()+ coord_flip()+labs(x="Method",y="TAC")+ylim(0,quantile(TAC.out,0.95,na.rm=T))
+
+TAC.plot_88_15<-ggplot(data=TAC.df.melt,aes(as.factor(variable),value, fill=variable))+stat_summary(fun.data = box.only, geom = "boxplot")+ coord_flip(ylim = c(0,quantile(TAC.df,0.96,na.rm=T)))+labs(x="Method",y="TAC (tonnes)") +scale_fill_manual(breaks=as.character(unique(TAC.df.melt$variable)),values=c(rep("white",7),"dark grey"))+guides(fill=FALSE)+theme_Publication()
+
+
+TAC.plot_88_15
+Ref88_15<-floor(MuC*FMSY)
+meangadget88_15<-MuC
+FMSY88_15<-FMSY
+#pdf("TAC_plot_88_15_realdata_Rachele.pdf", paper='A4r',width=9.27, height=11.69)
+#print(TAC.plot_88_15)
+#dev.off()
+ ggsave("/home/marga/Back up de MIPC/Documentos/TEXdocuments/rachele_master/Paper/TAC_plot_88_15_realdata_ggsave_fv_Rachele.pdf", plot = last_plot(), width=190, height=120, units="mm",device=cairo_pdf)
+#ggsave("TAC_plot_88_15_realdata_ggsave.eps",  width=190, height=120, units="mm",device=cairo_pdf)
+ggsave("/home/marga/Back up de MIPC/Documentos/TEXdocuments/rachele_master/Paper/TAC_plot_88_15_realdata_ggsave_fv_Rachele.jpg",  width=190, height=120, units="mm")
+
+@
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[bb=0 0 539 340,scale=0.5]{TAC_plot_88_15_realdata_ggsave_fv_Rachele.jpg} 
+\caption{Comparison of estimated TAC value between a Gadget model and other models using information from 1988 to 2015. The upper and lower "hinges" correspond to the first and third quartiles (the 25th and 75th percentiles)}
+\label{fig:real data}
+\end{figure}
+
+
+\newpage
+
+Conversely, Figure \ref{fig:real data 01-15} clearly shows a significant difference in model performance from 2001 to 2015 because of a higher distance between Gadget and others methods. For the second period (2001-2015), the length distribution fit
+achived by Gadget improves (likelihood score=2.7). The resulting TAC (Figure \ref{fig:real data 01-15}) in this second period becomes less conservative and,
+consequently, higher than data limited methods.
+
+<<eval=FALSE, echo=FALSE, results=hide, fig=FALSE>>=
+library(DLMtool)
+library(ggplot2)
+library(reshape2)
+#Running TAC estimation with DLMobject
+#access example data objects
+for(i in 1:length(DLMdat))assign(DLMdat[[i]]@Name,DLMdat[[i]])
+#avail('DLM_data') 
+#Ex_dlm.data<-new("DLM_data",stock="C:/Users/Jason.Cope/Documents/GitHub/Data-limited-tools/Shiny_DLMtool/DLM_objects_examples/Example_datafile.csv")
+#Ex_dlm.data2<-new("DLM_data",stock="/home/marga/Documents/Data_limited course/DLM/Example_datafile_anchovy_2001_2015.csv")
+Ex_dlm.data.OM.1<-new("DLM_data",stock="C:/Users/raki1/Documents/Tesi/Material and Methods/dati/Example_datafile_anchovy_sim.csv")
+Ex_dlm.data2@L95<-15
+Ex_dlm.data2@MPs<-c("AvC","BK_CC","CC1",      "CC4" ,"Fdem_CC",  "SBT1" ,    "SPMSY" )
+#,  "DDe",       "DDe75",      "matlenlim",  "matlenlim2", "MRnoreal",   "MRreal",     "slotlim"  #valen DDe y DDe75
+funcs <- Ex_dlm.data2@MPs
+temp <- DLMtool:::getTAC(Ex_dlm.data2, MPs = funcs, 1000)
+TACa <- temp[[1]]
+Ex_dlm.data2.TAC <- temp[[2]]
+Ex_dlm.data2.TAC@TAC <- TACa
+TAC.out<-Ex_dlm.data2.TAC@TAC[,,1]
+
+TAC.df<-data.frame(t(TAC.out))
+colnames(TAC.df)<-Ex_dlm.data2@MPs#MP.labs()
+
+#Para después de incluir el Gadget
+#TAC.df.melt<-melt(TAC.df)
+
+
+
+######################################################################3333
+#en el cesga he corrido:
+#load("/mnt/EMC/Home_SVG/home/csic/mdp/mrh/mnt/store/GADGET_backup/Anchovy74/WGTS/WGTS.Rdata")
+# directorio Anchovy75
+# load("WGTS/WGTS.Rdata")
+# fit<-out
+# pre.fleet<-filter(fit$fleet.info,year==2015) %>% select(fleet, ratio = harv.rate)
+
+#correr manualmente en el cesga gadget_forward_MR.r (Directorio Anchovy74 y PRE2 (res2)) parar en la línea 196 que da un error en llply y  #check anch file y cambiar normalparam por normalcond
+#####################################################################3
+#aquí
+#Run<-74
+#load(paste("/run/user/1000/gvfs/sftp:host=svg.cesga.es,user=csmdpmrh/mnt/EMC/Home_SVG/home/csic/mdp/mrh/mnt/store/GADGET_backup/Anchovy",Run,"/PRE2/out.Rdata",sep=""))
+#progn <- out
+# prueba<-gadget.forward(params.file='WGTS/params.final',
+#                          effort=seq(0.5,1.5,by = 0.05),
+#                          fleets=pre.fleet[3,],
+#                          years = 100,
+#                          num.trials = 10, rec.window=c(2001,2015), gd = list(dir = ".", rel.dir = "PRE5"))
+# prueba<-gadget.forward(params.file='WGTS/params.final',
+#                        effort=seq(0.5,1.5,by = 0.05),
+#                        fleets=data.frame(fleet = "seine", ratio = 0.6),
+#                        years = 100,
+#                        num.trials = 10, rec.window=c(2001,2015), gd = list(dir = ".", rel.dir = "PRE5"))
+# 
+# 
+# 
+# prueba<-gadget.forward(params.file='WGTS/params.final',
+#                        effort=seq(0.5,1.5,by = 0.05),
+#                        fleets=pre.fleet[3,],
+#                        years = 100,
+#                        num.trials = 10, gd = list(dir = ".", rel.dir = "PRE2"))
+# #Run
+# #Run
+
+#progn.ssb <- progn$lw
+#res <-
+  #left_join(progn$catch %>%
+              #group_by(year,trial,effort) %>%
+              #summarise(catch=sum(biomass.consumed)),
+            #progn.ssb) %>%
+  #filter(year > 2050) %>%
+  #ungroup() %>%
+  #group_by(stock,effort,trial) %>%
+  #summarise(catch=mean(catch),
+            #total.bio = mean(total.bio)) %>%
+  #ungroup() %>% 
+  #group_by(stock,effort) %>%
+  #summarise(catch.m=mean(catch),
+            #catch.u=quantile(catch,0.975),
+            #catch.l=quantile(catch,0.025),
+            #ssb.m=mean(total.bio),
+            #ssb.u=quantile(total.bio,0.975),
+            #ssb.l=quantile(total.bio,0.025))
+
+#save(res,file=paste("/run/user/1000/gvfs/sftp:host=svg.cesga.es,user=csmdpmrh/mnt/EMC/Home_SVG/home/csic/mdp/mrh/mnt/store/GADGET_backup/Anchovy",Run,"/res2.Rdata",sep=""))
+
+library(repmis)
+#Aquí
+#Run<-74
+#load(paste("/run/user/1000/gvfs/sftp:host=svg.cesga.es,user=csmdpmrh/mnt/EMC/Home_SVG/home/csic/mdp/mrh/mnt/store/GADGET_backup/Anchovy",Run,"/res2.Rdata",sep=""))
+source_data("https://github.com/mmrinconh/gadgetanchovy/blob/master/Anchovy74_Rachele/res2.Rdata?raw=True")
+Fmsy <- 
+  res %>% 
+  filter(catch.m==max(catch.m))
+#Prueba_Anchovy74 PRE
+# stock effort      catch.m      catch.u      catch.l        ssb.m        ssb.u        ssb.l
+# <chr> <fctr>        <dbl>        <dbl>        <dbl>        <dbl>        <dbl>        <dbl>
+#   1  anch    0.5 2.022195e+85 2.027537e+85 2.021256e+85 6.899173e+84 6.917399e+84 6.895971e+84
+
+#0.4 en la última
+FMSY<--log(1-as.numeric(as.character(Fmsy$effort)))
+#FMSY=0.5108, mensual 0.0425
+##############################################33
+
+
+#by quarters biomass and recruitment Run 73 modificando printfiles para que saliera por cuartos! al final no me sirve para el MSE
+
+# library(Rgadget)
+# plot(out$res.by.year$total.number)
+# plot(out,data='res.by.year',type='F')
+# plot(out$res.by.year$F[14:28],out$res.by.year$num.catch[14:28])
+
+# Run<-73
+# outi <- read.printfiles(paste("/run/user/1000/gvfs/sftp:host=svg.cesga.es,user=csmdpmrh/mnt/EMC/Home_SVG/home/csic/mdp/mrh/mnt/store/GADGET_backup/Anchovy",Run,"/WGTS/out.fit",sep="")) #de aquí se puede sacar la información por cuartos
+# #F anual así estaba
+# 
+# # f.by.year <- out[[sprintf("%s.prey", x)]] %>% 
+# #   group_by(year, area) %>% summarise(catch = sum(biomass.consumed), 
+# #                                      num.catch = sum(number.consumed), F = mean(mortality[age >= 
+# #                                                                                             min(f.age.range) & age <= max(f.age.range)]))
+# f.age.range <- c(max(outi[["anch.prey"]]$age), max(outi[["anch.prey"]]$age))
+# f.by.quarter <- outi[["anch.prey"]] %>% 
+#   group_by(year, step, area) %>% summarise(catch = sum(biomass.consumed), 
+#                                            num.catch = sum(number.consumed), F = mean(mortality[age >= 
+#                                                                                                   min(f.age.range) & age <= max(f.age.range)]))
+# #super plot en la que se ve que la mortalidad por edad es casi igual
+# outi[["anch.prey"]] %>% 
+#   +     group_by(year, step, age) %>% ggplot(aes(year+step,mortality))+geom_point()+facet_wrap(~age)
+# outi[["anch.prey"]] %>%  filter(step==2) %>%
+#    group_by(year, step, age) %>% ggplot(aes(year+step,mortality))+geom_point()+facet_wrap(~age)
+# 
+# bio.by.month<-outi[["anch.full"]] %>% 
+#   group_by(year, step, area) %>% summarize(total.number = sum(number))
+# biomass.by.month<-outi[["anch.full"]] %>% 
+#   group_by(year, step, area) %>% summarize(total.biomass = sum(number*mean.weight))
+# 
+# biomass.by.year<-outi[["anch.full"]] %>% 
+#   group_by(year, area) %>% summarize(total.biomass = sum(number*mean.weight))
+# #Esta biomasa difiere de out$res.by.year$total.biomass en que esta es la suma de la biomasa de todo el año, mientras la de Bjarki es la biomasa al principio del año, que creo que es mejor para calcular la TAC
+# 
+# 
+# CVgadget<-sd(biomass.by.year$total.biomass)/mean(biomass.by.year$total.biomass)
+# Cvgadget2<-sd(out$res.by.year$total.biomass)/mean(out$res.by.year$total.biomass)
+# MuC<-mean(biomass.by.year$total.biomass[23:28]*0.001)#0.001 para pasar de kilogramos a toneladas
+# 
+# MuC2<-mean(out$res.by.year$total.biomass[23:28]*0.001)#0.001 para pasar de kilogramos a toneladas
+# Biomgadget <- DLMtool:::trlnorm(100, MuC, CVgadget)
+
+########################################
+
+#Run<-74
+#load(paste("/run/user/1000/gvfs/sftp:host=svg.cesga.es,user=csmdpmrh/mnt/EMC/Home_SVG/home/csic/mdp/mrh/mnt/store/GADGET_backup/Anchovy",Run,"/WGTS/WGTS.Rdata",sep=""))
+source_data("https://github.com/mmrinconh/gadgetanchovy/blob/master/Anchovy74_Rachele/WGTS/WGTS.Rdata?raw=True")
+
+fit<-out
+Cvgadget<-sd(fit$res.by.year$num.catch)/mean(out$res.by.year$num.catch)# CV de capturas toda la serie
+MuC<-mean(fit$res.by.year$total.biomass[11:15]*0.001)#media de biomasa de los últimos 5 años
+Biomgadget <- DLMtool:::trlnorm(1000, MuC, Cvgadget)
+
+TAC.df$Gadget<-Biomgadget*FMSY
+
+#Para después de incluir el Gadget
+
+
+TAC.df.melt<-melt(TAC.df)
+
+box.only <- function(x) {
+  r <- quantile(x, probs = c(0.25, 0.25, 0.5, 0.75, 0.75))
+  names(r) <- c("ymin", "lower", "middle", "upper", "ymax")
+  r
+}
+
+
+#TAC.plot<-ggplot(data=TAC.df.melt,aes(as.factor(variable),value))+geom_boxplot()+ coord_flip()+labs(x="Method",y="TAC")+ylim(0,quantile(TAC.out,0.95,na.rm=T))
+
+TAC.plot.01.15<-ggplot(data=TAC.df.melt,aes(as.factor(variable),value, fill=variable))+stat_summary(fun.data = box.only, geom = "boxplot")+ coord_flip(ylim = c(0,quantile(TAC.df,0.95,na.rm=T)))+labs(x="Method",y="TAC (tonnes)") +scale_fill_manual(breaks=as.character(unique(TAC.df.melt$variable)),values=c(rep("white",7),"dark grey"))+ggtitle("TAC from 2001-2015 data")+guides(fill=FALSE)+theme_Publication()
+Ref<-MuC*FMSY
+TAC.plot.01.15
+pdf("TAC_plot_01_15_realdata_fv_Rachele.pdf", paper='A4r',width=9.27, height=11.69)
+print(TAC.plot.01.15)
+dev.off()
+ggsave("TAC_plot_01_15_realdata_ggsave_fv_Rachele.pdf",  width=190, height=120, units="mm",device=cairo_pdf)
+ggsave("TAC_plot_01_15_realdata_ggsave_fv_Rachele.jpg",  width=190, height=120, units="mm")
+
+
+@
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[bb=0 0 539 340,scale=0.5]{TAC_plot_01_15_realdata_ggsave_fv_Rachele.jpg} 
+\caption{Comparison of estimated TAC value between a Gadget model and other models using information from 2001 to 2015. The upper and lower "hinges" correspond to the first and third quartiles (the 25th and 75th percentiles)}
+\label{fig:real data 01-15}
+\end{figure}
+
+
+\chapter{Discussion}
+
+
+The main challenge for anchovy stock in the Gulf of C{\'a}diz is to find a stock assessment framework that could provide through models robust information for a management strategy accounting for key uncertainties and risks while supporting the sustainable exploitation of the resource. 
+The difficulties of evaluation of stock status through models are evident in this case and a comparison of models performance could provide an appropriate tool to understand which stock assessment model best contain all key of uncertainties and processes that are included within stock dynamics.
+The overall strategy use in this work allows to compare the performance of different models. The model performance is necessarely evaluated by using simulation testing.
+The investigation of a stategy evaluation through simulation studies should not be viewed as providing predictions, but rather be considered as a means for the comparison of the relative performance of alternative models applied to a particular fishery system. A simulation framework allows to include not only the assessment but also the source of uncertainty of this assessment \citep{butterworth2007management}.
+
+
+The success of this comparison depends to a large extent on the operating model. 
+The operating model, that represents the "truth" for the simulations, needs to be sufficiently complete to include all biological and ecosystemic processes to best represent reality.
+Especially because it is used as reference, it is important to include inside the reference model the full range of uncertainties involved in the dynamics of the stock, as in the case of the anchovy stock in the Gulf of C{\'a}diz \citep{butterworth1999experiences, punt2006fao}.
+The operating model also provides simulation data that are used to implement models.
+The development of such framework is robust to uncertainty because it is possible to evaluate which model will work best using this source of data. 
+Moreover, this framework allows to ensure a precautionary approach of the exploited resources. 
+
+Additionaly, the results of a simulation testing can be used to evaluate to which extent the same models implemented with real data are able to reflect the status of the stock with the same accuracy \citep{punt2016management}. The implementation of real data using the same models and the comparison with simulated data could be viewed as a control to undeline the capacity of the models.
+
+The need of the implementation of Gadget for real data in two different periods is clearly explained in Figure \ref{fig:ldist.seine}.
+Length distribution (Figure \ref{fig:ldist.seine}) shows that from 1988 to 2001 there is a major proportion of catches at length around 5 cm. This proportion decreases until a stable peaked of about 12 cm of length distribution is achieved.
+This difference in length distribution is due to an established of management measures, including a minimum landing size (10 cm), affecting directly the Gulf of Cadiz fishery. The change in length distribution coupled with environmental factors affect the trend of the goodness of fit of Gadget model. 
+The different pattern is also evident in the likelihood scores in Figure \ref{fig:likelihood}. The model does not fit the catch likelihood data equally well for all years, with higher likelihood scores for the first period for the length distribution.
+
+<<eval=FALSE, echo=FALSE, results=hide, fig=FALSE>>=
+
+#plots fit data
+#setwd("C:/Users/raki1/Documents/Tesi/Material and Methods/gadget_model/Anchovy75_Rachele/WGTS")
+#load("WGTS.Rdata") #del 75
+source_data("https://github.com/mmrinconh/gadgetanchovy/blob/master/Anchovy75_Rachele//WGTS/WGTS.Rdata?raw=True")
+library(ggplot2)
+library(Rgadget)
+fit <- out
+dat <- subset(fit$catchdist.fleets, name == "ldist.seine")
+#if (length(unique(dat$age)) == 1) {
+ldist.seine <- ggplot(dat, aes(lower, observed)) + geom_line() + facet_wrap(~year + step) + theme_bw()  + 
+       geom_text(data = mutate(subset(dat, lower == min(lower)), y = Inf), aes(lower, y, label = year), vjust = 2, hjust = -1) + 
+       ylab("Proportion") + xlab("length") + 
+       theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), panel.spacing =  unit(0, "cm"), plot.margin = unit(c(0, 0, 0, 0), "cm"), strip.background = element_blank(), strip.text.x = element_blank())
+#}
+pdf("ldist.seine.pdf", paper='A4r',width=9.27, height=11.69)
+ggsave("ldist.seine.pdf", plot = last_plot(), width=190, height=120, units="mm",device=cairo_pdf)
+plot(fit,data='summary')
+ggsave("likelihood.pdf", plot = last_plot(), width=190, height=120, units="mm",device=cairo_pdf)
+
+
+
+@
+
+
+
+
+\newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[page=1,width=0.80\textwidth]{likelihood.pdf} 
+\caption{Likelihood scores for length and age distribution of Gadget for real data. Dots represent the score for each quarter.}
+\label{fig:likelihood}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+\centering
+\includegraphics[bb=0 0 540 800]{./ldist_seine.pdf} 
+\caption{Observed length distribution of landings (1988-2015).}
+\label{fig:ldist.seine}
+\end{figure}
+
+\newpage
+
+
+In this work Gadget did not include the enviromental information, while catches in the reference time-series are driven by environmental variability plus a constant fishing rate. The fishing mortality in Gadget is not constant and it is estimated, in order to account for this variability, and results with a very small value. This is consistent with the conclusion reached by \citet{rincon2016economic} when stating that, under significant sources of environmentally driven variability, a constant fishing mortality regime will either overexploit a given cohort or underexploit it. The very low value (Figure \ref{fig:Fvalue}) that Gadget estimates for fishing mortality reflects that Gadget can get the whole picture of simulated underexploited populations.
+
+<<eval=FALSE, echo=FALSE, results=hide, fig=FALSE>>=
+#plots F value simulation data MSE
+#load(paste("C:/Users/raki1/Documents/Tesi/Material and Methods/MSE_Rachele/AnchovyMSEgadget12/WGTS1/WGTS.Rdata"))
+source_data("https://github.com/RacheleCorti/Model_comparison/blob/master/Simulated_data/AnchovyMSEgadget12/WGTS.Rdata")
+library(ggplot2)
+
+fit <-out
+ggplot(fit$res.by.year, aes(year, F)) + 
+  geom_line() + theme_bw() + ylab("F") + xlab("Year")+
+  theme(legend.position='none')
+ggsave("Fvalue.pdf", plot = last_plot(), width=190, height=120, units="mm",device=cairo_pdf)
+
+@
+
+
+\begin{figure}[h]
+\includegraphics[page=1,width=0.90\textwidth]{Fvalue.pdf} 
+\caption{Fishing mortality (F) values estimated with Gadget using one of the 10 simulated population.}
+\label{fig:Fvalue}
+\end{figure}
+
+
+\newpage
+The results of this work indicate that Gadget calculates better TAC estimates than the other methods in all the simulations. This work shows that Gadget as integrated model is able to use multiple sources of information at the same time and it replicates abundance indexes and catches time series with great accuracy.
+Gadget model used in this work does not include the environmental information but it is compared with operating model that accounts for the environmental factors effecting stock dynamics. It might be said that Gadget could accounts for external sources of variability. 
+Gadget is able to rapresent several processes and mechanisms, due to its flexibility, and to emphasise certain aspects due to its control of a large number of model components \cite{bartolino2011first}.
+
+Ultimately, in this work a reproducibility section is added in material and methods to make all input data and code publicly and easily accessible.
+A good scientific practice should be the availability to any reader of all computer codes involved in the creation or analysis of data. This sharing permits reproducibility of research that meant it can be generate independently by a different researcher in a different system.
+Making your research reproducible is important to show evidence of the correctness of your results and the credibility and transparency of the research. 
+If the source code is available, interested readers can check the developed methodology and they can applied on new data or they can modify and reuse the code for new research. Reproducibility, therefore, enables others to make an efficient use of our methods and results.
+It is extremely necessary to provide sufficient documentation that can be located in a stable repository such as GitHub. Various solutions have now become available to make data sharing more convenient, standardized, and accessible \citep{sandve2013ten, fehr2016best}. 
+Open access to data, code and software are relevant to advancing trustworthy science.
+The Implementation of Open Access to Scientific Publications and Research Data is a project supported by the European Research Council under Horizon 2020 that underlines the importance of open access for the growth of the research.
+
+\newpage
+Finally this work should be considered a prelude to much more complex models using Gadget. 
+Thanks to its capacity to support an ecosystem approach to fisheries (EAF) it could be possible to include the environmental variability as data for Gadget through the stock-recruitment relationship.
+This work confirms that Gadget is the best choice also in order to give an advice for management purposes due to its statistical core and the flexibility to include ecosystem processes.
+The general approach used in this work has demonstrated to help to develop a methodology that could be used to improve the quality of management. In fact, this strategy could be applied to test if existing methods have the ability to capture the true status of the system with appropriate accuracy. 
+It is essential to point out that the strategy has proved to be suitable to be used with different models in other fisheries assessments. 
+
+
+
+
+
+
+\backmatter
+
+
+
+\bibliographystyle{authordate2}
+\bibliography{Bibliography}
+
+\end{document}
